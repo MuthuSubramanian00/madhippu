@@ -3,7 +3,7 @@
 madhippu follows [semantic versioning](https://semver.org). The JSON output
 has its own version (`schema`), described in [docs/schema.md](docs/schema.md).
 
-## 0.1.0 (unreleased)
+## 0.1.0 (2026-10-28)
 
 First release.
 
