@@ -14,6 +14,9 @@ First release.
   from FY10 to FY26.
 - `madhippu` command: JSON (schema `madhippu/1`) and Excel output, with the
   disclaimer in both.
+- A page in the browser for people who don't use a terminal: `madhippu`
+  with no arguments, or the downloadable app for Windows, macOS and Linux.
+  It runs on the user's own computer (127.0.0.1) and uploads nothing.
 - Python API: `madhippu.parse`, `madhippu.parse_pages`, `madhippu.to_dict`.
 - Tests on synthetic pages: invented companies and figures, one layout
   quirk per page; no real report text.

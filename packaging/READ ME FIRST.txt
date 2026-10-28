@@ -1,0 +1,35 @@
+madhippu: financial statements out of Indian annual reports
+
+HOW TO USE
+
+1. Double-click "madhippu" (on Windows, "madhippu.exe").
+2. A small window opens, then a page in your web browser.
+3. Drop an annual report (PDF) onto that page.
+4. See the statements, and download them as Excel.
+
+Keep the small window open while you use madhippu; close it (or press
+Quit on the page) when you're done. Your files never leave this computer.
+
+
+THE FIRST TIME: YOUR COMPUTER WILL WARN YOU
+
+madhippu isn't signed with a paid Apple or Microsoft certificate, so the
+first time you open it your computer will say it can't check who made it.
+
+Windows: "Windows protected your PC". Click "More info", then "Run anyway".
+
+Mac: "madhippu can't be opened" or "Apple could not verify…". Click
+"Done", then open System Settings > Privacy & Security, scroll down, and
+click "Open Anyway" next to madhippu. Confirm with your password.
+
+You only need to do this once. If you'd rather check the program first,
+its full source is at https://github.com/MuthuSubramanian00/madhippu
+
+
+NOT INVESTMENT ADVICE
+
+madhippu's output is extracted by software and can be wrong. Check every
+figure you rely on against the report. It comes with no warranty and no
+liability; see DISCLAIMER.md in the source.
+
+madhippu is free software under the GNU AGPL-3.0.

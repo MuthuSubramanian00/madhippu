@@ -1,0 +1,73 @@
+# Builds the downloadable app for Windows, macOS and Linux, and attaches it
+# to a draft release when a version tag (v0.1.0) is pushed. Review the draft
+# on GitHub, then publish it.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:  # build without releasing, to try it
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            asset: madhippu-windows
+          - os: macos-latest
+            asset: madhippu-mac-apple-silicon
+          - os: ubuntu-latest
+            asset: madhippu-linux
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ".[dev]" pyinstaller
+      - run: pytest -q
+      - run: >
+          pyinstaller --onefile --name madhippu
+          --collect-data madhippu --collect-all pypdfium2 --collect-all pypdfium2_raw
+          packaging/launch.py
+      - name: Smoke test
+        shell: bash
+        run: ./dist/madhippu --version
+      - name: Package
+        shell: bash
+        run: |
+          mkdir "${{ matrix.asset }}"
+          cp dist/madhippu* LICENSE "packaging/READ ME FIRST.txt" "${{ matrix.asset }}/"
+          if [ "$RUNNER_OS" = Windows ]; then
+            7z a "${{ matrix.asset }}.zip" "${{ matrix.asset }}"
+          elif [ "$RUNNER_OS" = macOS ]; then
+            ditto -c -k --keepParent "${{ matrix.asset }}" "${{ matrix.asset }}.zip"
+          else
+            tar -czf "${{ matrix.asset }}.tar.gz" "${{ matrix.asset }}"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: ${{ matrix.asset }}.*
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+      - name: Draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
+          --draft --title "madhippu ${GITHUB_REF_NAME#v}" --generate-notes
+          madhippu-*.zip madhippu-*.tar.gz

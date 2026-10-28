@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>madhippu</title>
+<style>
+:root {
+  --bg: #f7f6f2; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6a64; --line: #e3e1d9;
+  --accent: #1f5f4a; --accent-text: #ffffff; --warn-bg: #fff4dc; --warn-line: #e9c46a; --warn-text: #6b4b00;
+  --error-bg: #fde8e6; --error-text: #8a1f12; --row: #faf9f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161614; --panel: #201f1c; --text: #ecebe6; --muted: #a09e96; --line: #34332e;
+    --accent: #5fbf9a; --accent-text: #0d1f18; --warn-bg: #3a2f12; --warn-line: #8a6d1f; --warn-text: #f3d68a;
+    --error-bg: #3d1a15; --error-text: #f4b3a8; --row: #1b1a18;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
+.tamil { color: var(--muted); }
+.lead { color: var(--muted); margin: 0 0 20px; }
+.quit { margin-left: auto; }
+button, .button { font: inherit; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--text); text-decoration: none;
+  display: inline-block; }
+.button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+button:hover, .button:hover { filter: brightness(0.96); }
+a { color: var(--accent); }
+#drop { display: block; border: 2px dashed var(--line); border-radius: 14px; background: var(--panel);
+  padding: 48px 20px; text-align: center; cursor: pointer; transition: border-color .15s; }
+#drop.over { border-color: var(--accent); }
+#drop strong { display: block; font-size: 18px; margin-bottom: 6px; }
+#drop p { margin: 4px 0; color: var(--muted); }
+.note { font-size: 13px; color: var(--muted); }
+.busy { text-align: center; padding: 48px 20px; }
+.spinner { width: 28px; height: 28px; border: 3px solid var(--line); border-top-color: var(--accent);
+  border-radius: 50%; margin: 0 auto 12px; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.error { background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 12px 14px; margin: 16px 0; }
+.summary { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.summary h2 { font-size: 18px; margin: 0 0 4px; overflow-wrap: anywhere; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.warnings { background: var(--warn-bg); color: var(--warn-text); border-left: 3px solid var(--warn-line);
+  border-radius: 6px; padding: 8px 12px; margin: 10px 0; font-size: 14px; }
+.warnings ul { margin: 4px 0 0; padding-left: 18px; }
+nav.toc { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 16px; }
+nav.toc a { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--text); text-decoration: none; background: var(--panel); }
+section.st { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+section.st > .head { padding: 14px 16px 6px; display: flex; gap: 8px 16px; align-items: baseline; flex-wrap: wrap; }
+section.st h3 { margin: 0; font-size: 17px; }
+.meta { color: var(--muted); font-size: 13px; }
+.meta a { color: var(--accent); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { padding: 6px 16px; border-top: 1px solid var(--line); }
+td:first-child { min-width: 15em; }
+@media (max-width: 600px) { th, td { padding: 6px 10px; } td:first-child { min-width: 12em; } }
+th { text-align: right; font-weight: 600; white-space: nowrap; color: var(--muted); }
+th:first-child, td:first-child { text-align: left; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.dropped { color: var(--muted); cursor: help; }
+tbody tr:nth-child(even) { background: var(--row); }
+footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>madhippu</h1><span class="tamil">மதிப்பு</span>
+    <button class="quit" id="quit" title="Stop madhippu">Quit</button>
+  </header>
+  <p class="lead">Reads the balance sheet, profit and loss and cash flows out of an Indian annual report.</p>
+
+  <div id="start">
+    <label id="drop" tabindex="0">
+      <strong>Drop an annual report (PDF) here</strong>
+      <p>or click to choose a file</p>
+      <p class="note">The file stays on this computer. Nothing is uploaded to the internet.</p>
+      <input id="file" type="file" accept="application/pdf,.pdf" hidden>
+    </label>
+  </div>
+
+  <div id="busy" class="busy hidden">
+    <div class="spinner"></div>
+    <div>Reading <span id="busy-name"></span>…</div>
+    <div class="note">A long report can take a minute.</div>
+  </div>
+
+  <div id="error" class="error hidden"></div>
+  <div id="result" class="hidden"></div>
+
+  <footer>
+    <p>{{DISCLAIMER}}</p>
+    <p>madhippu {{VERSION}} · free software under the AGPL-3.0 ·
+      <a href="https://github.com/MuthuSubramanian00/madhippu" target="_blank" rel="noopener">source and help</a></p>
+  </footer>
+</main>
+
+<script>
+const TOKEN = "{{TOKEN}}";
+const TITLES = { balance_sheet: "Balance sheet", profit_and_loss: "Profit and loss", cash_flow: "Cash flows" };
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...children) => {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") node.className = v; else node.setAttribute(k, v);
+  }
+  for (const c of children) node.append(c);  // strings become text, never HTML
+  return node;
+};
+
+function show(which) {
+  for (const id of ["start", "busy", "result"]) $(id).classList.toggle("hidden", id !== which);
+}
+function fail(message) {
+  $("error").textContent = message;
+  $("error").classList.remove("hidden");
+  show("start");
+}
+
+const amount = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 });
+function format(value, row) {
+  if (row.count) return amount.format(value);
+  const text = amount.format(Math.abs(value));
+  return value < 0 ? `(${text})` : text;  // negatives in brackets, as reports print them
+}
+
+async function upload(file) {
+  if (!file) return;
+  $("error").classList.add("hidden");
+  if (!/\.pdf$/i.test(file.name) && file.type !== "application/pdf") return fail("Please choose a PDF file.");
+  $("busy-name").textContent = file.name;
+  show("busy");
+  try {
+    const res = await fetch("/parse", {
+      method: "POST",
+      headers: { "X-Madhippu-Token": TOKEN, "X-Filename": unescape(encodeURIComponent(file.name)),
+                 "Content-Type": "application/pdf" },
+      body: file,
+    });
+    const data = await res.json();
+    if (!res.ok) return fail(data.error || "Something went wrong.");
+    render(data);
+  } catch (e) {
+    fail("Couldn't reach madhippu. Is its window still open?");
+  }
+}
+
+function render(data) {
+  const out = $("result");
+  out.replaceChildren();
+  const base = `/report/${data.id}`;
+  const n = data.statements.length;
+
+  const summary = el("div", { class: "summary" },
+    el("h2", {}, data.file),
+    el("div", { class: "meta" }, `${data.pages} pages · ${n} statement${n === 1 ? "" : "s"} found`));
+  if (data.warnings.length) {
+    summary.append(el("div", { class: "warnings" }, ...data.warnings.map((w) => el("div", {}, w))));
+  }
+  const actions = el("div", { class: "actions" });
+  if (n) {
+    actions.append(el("a", { class: "button primary", href: `${base}.xlsx` }, "Download Excel"),
+                   el("a", { class: "button", href: `${base}.json` }, "Download JSON"));
+  }
+  const again = el("button", {}, "Read another report");
+  again.onclick = () => { $("file").value = ""; show("start"); };
+  actions.append(again);
+  summary.append(actions);
+  out.append(summary);
+
+  if (n) {
+    out.append(el("nav", { class: "toc" }, ...data.statements.map((st, i) =>
+      el("a", { href: `#st${i}` }, `${st.basis === "consolidated" ? "Consolidated" : "Standalone"} ${TITLES[st.kind].toLowerCase()}`))));
+  }
+
+  data.statements.forEach((st, i) => {
+    const title = `${st.basis === "consolidated" ? "Consolidated" : "Standalone"} ${TITLES[st.kind].toLowerCase()}`;
+    const head = el("div", { class: "head" },
+      el("h3", {}, title),
+      el("span", { class: "meta" },
+        el("a", { href: `${base}.pdf#page=${st.page}`, target: "_blank", rel: "noopener",
+                  title: "Open the report at this page to check the figures" }, `page ${st.page}`),
+        ` · amounts in ${st.unit}`));
+    const section = el("section", { class: "st", id: `st${i}` }, head);
+    if (st.warnings.length) {
+      section.append(el("div", { class: "warnings", style: "margin: 4px 16px 10px" },
+        "Check these against the report:", el("ul", {}, ...st.warnings.map((w) => el("li", {}, w)))));
+    }
+    const thead = el("thead", {}, el("tr", {}, el("th", {}, st.period === "as at" ? "As at" : "Year ended"), ...st.columns.map((c) => el("th", {}, c))));
+    const tbody = el("tbody");
+    for (const row of st.rows) {
+      const name = row.label + (row.per_share ? " (₹ per share)" : row.count ? " (number of shares)" : "");
+      const tr = el("tr", {}, el("td", { title: row.item }, name));
+      for (const v of row.values) {
+        tr.append(v === null
+          ? el("td", { class: "num dropped", title: "Left out: this section didn't add up to its printed total for this year" }, "—")
+          : el("td", { class: "num" }, format(v, row)));
+      }
+      tbody.append(tr);
+    }
+    section.append(el("div", { class: "scroll" }, el("table", {}, thead, tbody)));
+    out.append(section);
+  });
+  show("result");
+  window.scrollTo(0, 0);
+}
+
+const drop = $("drop");
+$("file").addEventListener("change", (e) => upload(e.target.files[0]));
+drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") $("file").click(); });
+for (const t of ["dragenter", "dragover"]) drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); });
+for (const t of ["dragleave", "drop"]) drop.addEventListener(t, () => drop.classList.remove("over"));
+drop.addEventListener("drop", (e) => { e.preventDefault(); upload(e.dataTransfer.files[0]); });
+// A file dropped outside the box shouldn't make the browser open it instead.
+for (const t of ["dragover", "drop"]) window.addEventListener(t, (e) => e.preventDefault());
+
+$("quit").onclick = async () => {
+  try { await fetch("/quit", { method: "POST", headers: { "X-Madhippu-Token": TOKEN } }); } catch (e) {}
+  document.body.replaceChildren(el("main", {}, el("h1", {}, "madhippu has stopped"),
+    el("p", { class: "lead" }, "You can close this tab. Open madhippu again to read another report.")));
+};
+</script>
+</body>
+</html>

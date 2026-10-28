@@ -28,6 +28,21 @@ revised Schedule VI (FY12 to FY16) and the old Schedule VI (to FY11).
 
 ## Install
 
+### Without Python
+
+Download the app for your computer from the
+[latest release](https://github.com/MuthuSubramanian00/madhippu/releases/latest)
+(Windows, Mac with Apple silicon, or Linux), unzip it and double-click
+`madhippu`. A page opens in your browser: drop an annual report on it, see
+the statements, and download them as Excel. The page runs on your own
+computer; nothing is uploaded.
+
+madhippu isn't signed with a paid certificate, so the first time Windows or
+macOS warns that it can't verify the developer. The "READ ME FIRST" file in
+the download says how to open it anyway.
+
+### With Python
+
 Python 3.10 or newer.
 
 ```bash
@@ -42,6 +57,9 @@ python3 -m venv .venv
 ```
 
 ## Use
+
+`madhippu` with no arguments opens the page in your browser, as the app
+does. With a file:
 
 ```bash
 madhippu annual-report.pdf --json out.json --xlsx out.xlsx

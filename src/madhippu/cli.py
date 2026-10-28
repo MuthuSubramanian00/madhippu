@@ -1,5 +1,8 @@
 """madhippu REPORT.pdf [--json FILE] [--xlsx FILE]
 
+With no arguments at all, madhippu opens its page in the browser instead
+(madhippu.app): what double-clicking the downloaded app does.
+
 With neither option, JSON goes to standard output. A summary goes to
 standard error. Exit status: 0 if any statement was read, 1 if none, 2 if
 the file couldn't be read.
@@ -20,6 +23,10 @@ TITLES = {"balance_sheet": "balance sheet", "profit_and_loss": "profit and loss"
 
 
 def main(argv: list[str] | None = None) -> int:
+    if not (sys.argv[1:] if argv is None else argv):
+        from madhippu import app
+        return app.main()
+
     parser = argparse.ArgumentParser(
         prog="madhippu",
         description="Read the financial statements in an Indian annual report (PDF) "
@@ -44,7 +51,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.json is not None:
         text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
         if str(args.json) == "-":
-            sys.stdout.write(text)
+            sys.stdout.flush()
+            sys.stdout.buffer.write(text.encode("utf-8"))  # a Windows console isn't UTF-8
         else:
             args.json.write_text(text, encoding="utf-8")
     if args.xlsx is not None:
