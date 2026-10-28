@@ -1,6 +1,6 @@
 [project]
 name = "madhippu"
-version = "0.1.0"
+version = "0.1.1"
 description = "Financial statements out of Indian annual reports (PDF) into checked JSON or Excel. Deterministic, offline, no AI."
 readme = "README.md"
 requires-python = ">=3.10"

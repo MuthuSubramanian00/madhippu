@@ -1,0 +1,119 @@
+Annual Report 
+2025-26
+MD&A Board Reports Financial Statements
+114 115
+Balance Sheet
+As at March 31, 2026
+CIN: L00000KA2000PLC000000 (Amounts in ₹ crores, unless otherwise stated) 
+As per our report of even date.
+For Example & Associates
+Chartered Accountants
+For and on behalf of the board of directors of
+Example Mobility Limited
+Firm registration no.000000S
+Partner
+Membership no.000000
+Executive Director and Chief Executive Officer
+DIN: 00000001
+Chief Financial Officer
+Company Secretary
+Place : Bengaluru 
+Date : May 04, 2026
+Place : Bengaluru 
+Date : May 04, 2026
+Particulars Note No. As at March 31, 2026 As at March 31, 2025 
+ASSETS
+NON CURRENT ASSETS
+Property, plant and equipment 2(a) 207.30 167.35 
+Right of use assets 2(b) 118.35 144.30 
+Capital work-in-progress 2(c) 52.60 5.65 
+Intangible assets 2(d) 81.70 84.30 
+Financial assets
+(i) Other financial assets 3 24.80 23.30 
+Other non-current assets 4 134.25 72.55 
+TOTAL - NON CURRENT ASSETS 619.00 497.45 
+CURRENT ASSETS
+Inventories 5 181.55 144.65 
+Financial assets 
+(i) Investments 6 352.00 41.00 
+(ii) Trade receivables 7 6.30 9.85 
+(iii) Cash and cash equivalents 8 91.95 69.80 
+(iv) Other financial assets 3 600.00 35.15 
+Other current assets 4 205.30 148.75 
+TOTAL - CURRENT ASSETS 1,437.10 449.20 
+TOTAL ASSETS 2,056.10 946.65 
+EQUITY AND LIABILITIES
+EQUITY
+Equity share capital 12 38.25 29.05 
+Other equity 13 973.05 30.75 
+TOTAL - EQUITY 1,011.30 59.80 
+LIABILITIES
+NON CURRENT LIABILITIES
+Financial liabilities
+(i) Borrowings 14 167.40 116.85 
+(ii) Lease liabilities 15 100.60 123.10 
+(iii) Provisions 17 45.40 39.20 
+TOTAL - NON CURRENT LIABILITIES 313.40 279.15 
+CURRENT LIABILITIES
+Financial liabilities
+(i) Borrowings 14 45.65 132.95 
+(ii) Lease liabilities 15 20.55 16.30 
+(iii) Trade payables
+(A) Total outstanding dues of micro and small enterprises 19 38.05 28.35 
+(B) Total outstanding dues of creditors other than micro and small enterprises 19 471.95 312.55 
+Other current liabilities 18 90.25 58.70 
+Provisions 17 64.95 58.85 
+TOTAL - CURRENT LIABILITIES 731.40 607.70 
+TOTAL EQUITY AND LIABILITIES 2,056.10 946.65 
+The accompanying notes 1-40 form an integral part of these financial statements.
+Statement of Profit and Loss
+For the year ended March 31, 2026
+CIN: L00000KA2000PLC000000 (Amounts in ₹ crores, unless otherwise stated) 
+As per our report of even date.
+For Example & Associates
+Chartered Accountants
+For and on behalf of the board of directors of
+Example Mobility Limited
+Firm registration no.000000S
+Partner
+Membership no.000000
+Executive Director and Chief Executive Officer
+DIN: 00000001
+Chief Financial Officer
+Company Secretary
+Place : Bengaluru 
+Date : May 04, 2026
+Place : Bengaluru 
+Date : May 04, 2026
+Particulars Note No. For the year ended
+March 31, 2026
+For the year ended
+March 31, 2025
+I Revenue from operations 20 2,671.75 1,255.00 
+II Other income 21 51.30 40.20 
+III Total income (I + II) 2,723.05 1,295.20 
+IV Expenses
+Cost of material consumed 22 1,808.15 926.90 
+Change in inventories of finished goods 24 (7.60) (30.80) 
+Employee benefits expenses 25 381.60 312.40 
+Finance costs 26 42.20 60.60 
+Depreciation and amortisation expenses 27 122.90 111.00 
+Other expenses 28 600.90 446.70 
+Total expenses (IV) 2,948.15 1,826.80 
+V Loss before exceptional items and tax (III - IV) (225.10) (531.60) 
+VI Exceptional items 29 5.05 - 
+VII Loss before tax (V - VI) (230.15) (531.60) 
+VIIITax expense
+(1) Current tax 32 - - 
+(2) Deferred tax 32 - - 
+Total tax expense (VIII) - - 
+IX Loss for the year (VII - VIII) (230.15) (531.60) 
+X Other comprehensive income
+(1) Items that will not be reclassified to profit or loss
+Re-measurement gain / (loss) on defined benefit plans 34 0.40 (2.60) 
+Total other comprehensive income / (loss) for the year (X) 0.40 (2.60) 
+XI Total comprehensive loss for the year (IX+X) (229.75) (534.20) 
+XII Loss per equity share in ₹ (face value of ₹ 1 each)
+(1) Basic 31 (6.22) (14.37) 
+(2) Diluted 31 (6.22) (14.37) 
+The accompanying notes 1-40 form an integral part of these financial statements.

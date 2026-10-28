@@ -1,0 +1,129 @@
+Consolidated
+FINANCIAL STATEMENTS
+130 Integrated Annual Report 2025-26 131
+Example Engineering Limited
+Integrated Annual Report 2025-26
+Consolidated Balance Sheet 
+as at March 31, 2026
+` in Crore
+Particulars Note No. As at
+March 31, 2026
+As at
+March 31, 2025
+ASSETS
+(1) Non-Current Assets
+(a) Property, plant and equipment 5 812.40 790.15
+(b) Right-of-use assets 6 120.35 98.20
+(c) Capital work-in-progress 7 40.10 22.65
+(d) Intangible assets 8 5.15 7.00
+ 978.00 918.00
+(e) Financial assets
+(i) Investments 9 *- *- (ii) Trade receivables 10 25.30 60.10
+(iii) Other financial assets 11 44.20 41.80
+ 69.50 101.90
+(f) Deferred tax assets (net) 25 210.50 198.40
+(g) Other non-current assets 12 95.00 101.20
+Total Non-Current Assets 1,353.00 1,319.50
+(2) Current Assets
+(a) Inventories 13 900.25 810.60
+(b) Financial assets
+(i) Trade receivables 14 3,950.40 3,410.75
+(ii) Cash and cash equivalents 15 210.30 250.45
+(iii) Other financial assets 16 130.55 98.30
+ 4,291.25 3,759.50
+(c) Contract assets 17 6,100.80 5,420.10
+(d) Other current assets 18 640.20 690.35
+Total Current Assets 11,932.50 10,680.55
+Total Assets 13,285.50 12,000.05
+EQUITY AND LIABILITIES
+Equity
+(a) Equity share capital 19 40.00 40.00
+(b) Other equity 20 4,183.05 4,074.15
+Total Equity 4,223.05 4,114.15
+Liabilities
+(1) Non-Current Liabilities
+(a) Financial liabilities
+(i) Borrowings 22 400.00 250.00
+(ii) Lease liabilities 23 90.10 75.40
+ 490.10 325.40
+(b) Provisions 24 30.25 12.10
+Total Non-Current Liabilities 520.35 337.50
+(2) Current Liabilities
+(a) Financial liabilities
+(i) Borrowings 26 2,500.00 1,900.00
+(ii) Lease liabilities 27 30.50 25.20
+(iii) Trade payables 28
+- total outstanding dues of micro and small enterprises 120.40 98.10 - total outstanding dues of creditors other than micro and small 
+enterprises
+ 4,800.60 4,500.20
+(iv) Other financial liabilities 29 60.30 55.40
+ 7,511.80 6,578.90
+(b) Contract liabilities 30 900.10 850.30
+(c) Provisions 31 50.20 48.70
+(d) Current tax liabilities (net) 32 80.00 70.50
+Total Current Liabilities 8,542.10 7,548.40
+Total Equity and Liabilities 13,285.50 12,000.05
+* less than rounding off norms adopted by the Company.
+The above Consolidated Balance Sheet should be read in conjunction with the accompanying notes.
+In terms of our report of even date
+For Example & Co. Chartered Accountants
+Firm Registration Number: 000000N/N000000
+For and on behalf of the Board of Directors
+Chairman Managing Director
+DIN - 00000001 DIN - 00000002
+Partner
+Membership Number : 100000
+Chief Financial Officer Company Secretary
+Place : Mumbai Place : Mumbai
+Date : May 15, 2026 Date : May 15, 2026
+Consolidated Statement of Profit and Loss
+for the year ended March 31, 2026
+` in Crore
+Particulars Note No. For the year ended
+March 31, 2026
+For the year ended
+March 31, 2025
+I Revenue from operations 33 12,000.50 11,200.30
+II Other income 34 30.20 40.10
+III Total Income (I+II) 12,030.70 11,240.40
+IV Expenses
+(i) Cost of materials consumed 35 6,000.00 5,500.00
+(ii) Changes in inventories of finished goods and work-in-progress 36 (150.20) 80.30
+(iii) Erection and sub-contracting expenses 37 3,500.40 3,300.20
+(iv) Employee benefits expense 38 900.30 850.10
+(v) Finance costs 39 350.20 340.10
+(vi) Depreciation and amortisation expense 40 110.40 100.30
+(vii) Other expenses 41 900.00 880.00
+Total expenses 11,611.10 11,051.00
+V Profit before exceptional items and tax (III-IV) 419.60 189.40
+VI Exceptional items 60 25.00 -
+VII Profit after exceptional items and before tax (V - VI) 394.60 189.40
+VIII Tax expenses 42
+(i) Current tax 95.30 70.20
+(ii) Deferred tax 4.10 (12.40)
+ 99.40 57.80
+IX Profit for the year (VII - VIII) 295.20 131.60
+X Other Comprehensive Income
+A. Items that will not be reclassified to profit or loss
+(i) Remeasurement of defined benefit obligations 50 (3.10) (0.20)
+(ii) Income tax relating to these items 42.2 0.78 0.05
+B. Items that will be reclassified to profit or loss
+(i) Net gain on cash flow hedges 120.00 30.00
+(ii) Income tax relating to these items 42.2 (30.20) (7.55)
+Total Other Comprehensive Income 87.48 22.30
+XI Total Comprehensive Income for the year (IX+X) 382.68 153.90
+XII Earnings per equity share (of ` 2 each)
+(i) Basic (in `) 43 14.76 6.58
+(ii) Diluted (in `) 14.76 6.58
+The above Consolidated Statement of Profit and Loss should be read in conjunction with the accompanying notes.
+In terms of our report of even date
+For Example & Co. Chartered Accountants
+Firm Registration Number: 000000N/N000000
+For and on behalf of the Board of Directors
+Chairman Managing Director
+DIN - 00000001 DIN - 00000002
+Partner
+Membership Number : 100000
+Chief Financial Officer Company Secretary
+Place : Mumbai Place : Mumbai
+Date : May 15, 2026 Date : May 15, 2026

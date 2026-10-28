@@ -26,7 +26,8 @@ is the same for all of them:
 Layouts: Ind-AS (FY17 onward), Indian GAAP under revised Schedule VI (FY12 to
 FY16 reports) and under the old Schedule VI (to FY11), for the balance sheet
 and profit and loss; one cash flow layout serves all of them. Written against
-TCS's, Infosys's and Mahindra & Mahindra's reports, FY10 to FY26; another
+TCS's, Infosys's and Mahindra & Mahindra's reports, FY10 to FY26, and KEC
+International's and Ather Energy's FY26; another
 company's wording may need rules added, and a statement that can't be read
 yields warnings rather than guesses.
 """
@@ -47,10 +48,20 @@ _UNIT = re.compile(
     r"\(\s*(?:`|₹|H|Rs\.?)\s*(?:in\s+)?(crores?|lakhs?|millions?)\s*\)"
     r"|\bRs\.?\s+in\s+(crores?|lakhs?|millions?)\b"  # "Rs. in crores", unbracketed
     r"|(?:^|\s)Rupees\s+(?:in\s+)?(crores?|lakhs?|millions?)\s*$"  # "... March, 2015 Rupees crores"
-    r"|(?:^|\s)(?:`|₹)\s*(crores?|lakhs?|millions?)\s*$"  # "` crores" on its own
+    r"|(?:^|\s)(?:`|₹)\s*(?:in\s+)?(crores?|lakhs?|millions?)\s*$"  # "` crores", "` in Crore" on its own
     r"|\bin\s+(?:`|₹)\s*(crores?|lakhs?|millions?)\b",  # "(In ₹ crore, except per share data)"
     re.I | re.M,
 )
+
+
+_AMOUNTS_NOTE = re.compile(r"\((?:all\s+)?amounts?\b[^()]*\)\s*$", re.I)
+
+
+def _is_unit_line(line: str) -> bool:
+    """A statement's unit line: short ("` in Crore"), or a bracketed note
+    closing the line ("CIN: ... (Amounts in ₹ crores, unless otherwise
+    stated)"); not a unit inside a table's long header."""
+    return _UNIT.search(line) is not None and (len(line.split()) <= 4 or _AMOUNTS_NOTE.search(line) is not None)
 
 
 def _unit(text: str) -> int | None:
@@ -61,12 +72,12 @@ _MONTHS = "January|February|March|April|May|June|July|August|September|October|N
 # "March 31, 2024", "31 March 2024", "31st March, 2024"
 _DATE = re.compile(rf"\b(?:({_MONTHS})\s+(\d{{1,2}}),\s*|(\d{{1,2}})(?:st|nd|rd|th)?\s+({_MONTHS}),?\s+)(\d{{4}})")
 _SIGN_OFF = re.compile(rf"\b[A-Z][a-z]+,\s+(?:({_MONTHS})\s+(\d{{1,2}}),\s*|(\d{{1,2}})(?:st|nd|rd|th)?\s+({_MONTHS}),?\s+)(\d{{4}})")
-_NIL = {"-", "–", "—", "-*", "–*"}  # "-*": less than half a unit
+_NIL = {"-", "–", "—", "-*", "–*", "*-", "*–"}  # "-*", "*-": less than half a unit
 _VALUE = re.compile(r"^-?[\d,]*\d(?:\.\d+)?$|^\(-?[\d,]*\d(?:\.\d+)?\)$")
 # "8(a)", "17", "2.13", "4,6" (a number's last group has three digits), schedule "N"
 _NOTE = re.compile(r"^(?:\d{1,2}(?:\.\d{1,2}){0,2}(?:\s?\([A-Za-z]{1,3}\))?|\d{1,2}(?:,\d{1,2})+|[A-Z])$")
-_MARKER = re.compile(r"^(?:\((?:[a-z]|[ivx]+[a-z]?)\)\s*)+", re.I)  # "(a)", "(iv)", "(ia)"
-_ROMAN = re.compile(r"^[IVX]+\b\.?\s*")  # "IV. Expenses", "III TOTAL INCOME", "IX.TOTAL"
+_MARKER = re.compile(r"^(?:\((?:[a-z]|[ivx]+[a-z]?|\d)\)\s*)+", re.I)  # "(a)", "(iv)", "(ia)", "(1)"
+_ROMAN = re.compile(r"^[IVX]+(?:\b\.?\s*|(?=[A-Z][a-z]))")  # "IV. Expenses", "III TOTAL INCOME", "IX.TOTAL", "VIIITax"
 _LETTERED = re.compile(r"^[A-Za-z]\s?[.)]\s*(?=[A-Za-z(])")  # "A. Cash Flow from...", "b) Loans"
 _NUMBERED = re.compile(r"^\d{1,2}\s+(?=[A-Za-z(])")  # "10 CURRENT ASSETS, LOANS AND ADVANCES"
 _YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
@@ -97,6 +108,8 @@ class Rule:
             return False
         if self.section is not None and self.section != section:
             return False
+        if not self.label and kind != "total":
+            return False  # an unlabelled section total, never a subtotal within it
         if "*" in self.label:
             return fnmatchcase(label, self.label)
         return label == self.label
@@ -277,13 +290,13 @@ BALANCE_SHEET = Layout(
 PROFIT_AND_LOSS = Layout(
     kind="profit_and_loss",
     title="profit and loss",
-    required=("total income", "total expenses", "profit before tax",
+    required=("total income", "total expenses", "profit before tax|profit after exceptional items and before tax",
               "profit for the year|profit for the period"),
     last=("earnings per equity share", "weighted average number of equity shares"),
     initial="income",
     sections={
         "income": "income", "expenses": "expenses", "exceptional item": "exceptional", "exceptional items": "exceptional",
-        "tax expense": "tax",
+        "tax expense": "tax", "tax expenses": "tax",
         "profit for the year attributable to": "profit_to",
         "profit for the period attributable to": "profit_to",
         "other comprehensive income for the year attributable to": "oci_to",
@@ -296,7 +309,7 @@ PROFIT_AND_LOSS = Layout(
         ("total income", "income"), ("total expenses", "expenses"),
         ("total tax expense", "tax"), ("total other comprehensive", "oci"),
     ),
-    globals=("profit before", "profit for the year", "profit for the period", "profit after tax",
+    globals=("profit before", "profit after exceptional items and before tax", "profit for the year", "profit for the period", "profit after tax",
              "total comprehensive income for the year", "total comprehensive income for the period",
              "earnings per equity share", "weighted average number", "weighted average equity shares"),
     instant=False,
@@ -320,6 +333,7 @@ PROFIT_AND_LOSS = Layout(
              "ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod"),
         Rule(None, "profit before tax from discontinued operations*", "ProfitLossFromDiscontinuedOperationsBeforeTax"),
         Rule(None, "profit before tax*", "ProfitBeforeTax"),  # "(III-IV)"
+        Rule(None, "profit after exceptional items and before tax*", "ProfitBeforeTax"),
         Rule("tax", "current tax", "CurrentTax"),
         Rule("tax", "deferred tax", "DeferredTax"),
         Rule(None, "total tax expense", "TaxExpense"),
@@ -341,6 +355,7 @@ PROFIT_AND_LOSS = Layout(
              "BasicEarningsLossPerShareFromDiscontinuedOperations"),
         Rule(None, "earnings per equity share*", "BasicEarningsLossPerShareFromContinuingAndDiscontinuedOperations"),
         Rule(None, "diluted (*)", "DilutedEarningsLossPerShareFromContinuingAndDiscontinuedOperations"),
+        Rule(None, "diluted", "DilutedEarningsLossPerShareFromContinuingAndDiscontinuedOperations"),
         Rule(None, "weighted average number of equity shares*", "WeightedAverageNumberOfEquityShares"),
         Rule(None, "weighted average equity shares*", "WeightedAverageNumberOfEquityShares"),
     ),
@@ -374,7 +389,7 @@ CASH_FLOW = Layout(
         ("net cash*investing activit", "investing"),
         ("net cash*financing activit", "financing"),
     ),
-    subtotals=("operating profit before working capital changes", "cash*generated from operations",
+    subtotals=("operating profit before working capital changes", "cash*generated from*operations",
                "cash*used in operations"),
     # Not "Net decrease in cash credit facilities", a financing line.
     globals=("net change in cash", "net*increase*in cash and cash", "net*decrease*in cash and cash",
@@ -384,10 +399,13 @@ CASH_FLOW = Layout(
     labelled_totals=True,  # "Net cash from...": an unlabelled sum above it is a subtotal
     rules=(
         Rule("operating", "depreciation and amortisation expense", "AdjustmentsForDepreciationAndAmortisationExpense"),
-        Rule(None, "cash*generated from operations", "CashFlowsFromUsedInOperations"),
+        Rule(None, "cash*generated from*operations", "CashFlowsFromUsedInOperations"),  # "from / (used in)"
         Rule(None, "cash*used in operations", "CashFlowsFromUsedInOperations"),
         Rule("operating", "taxes paid*", "IncomeTaxesPaidRefundClassifiedAsOperatingActivities", -1),
         Rule("operating", "income taxes paid*", "IncomeTaxesPaidRefundClassifiedAsOperatingActivities", -1),
+        Rule("operating", "income tax* refund*(paid)*", "IncomeTaxesPaidRefundClassifiedAsOperatingActivities", -1),
+        # "Refund/ (Payment) of taxes (net)", "(Payment) / Refund of taxes (net)"
+        Rule("operating", "*(payment)*of taxes*", "IncomeTaxesPaidRefundClassifiedAsOperatingActivities", -1),
         Rule(None, "net cash*operating activit*", "CashFlowsFromUsedInOperatingActivities"),
         Rule("investing", "payment* for purchase of property, plant and equipment",
              "PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities", -1),
@@ -400,6 +418,7 @@ CASH_FLOW = Layout(
         # Infosys and M&M wordings; these include intangibles, so they're fixed assets.
         Rule("investing", "payment towards capital expenditure*", "PurchaseOfFixedAssets", -1),
         Rule("investing", "expenditure on property, plant and equipment*", "PurchaseOfFixedAssets", -1),
+        Rule("investing", "capital expenditure on property, plant and equipment*", "PurchaseOfFixedAssets", -1),
         Rule("investing", "payment* to acquire property, plant * equipment*", "PurchaseOfFixedAssets", -1),
         Rule("investing", "proceeds from sale of property, plant * equipment*", "ProceedsFromSaleOfFixedAssets"),
         Rule("investing", "acquisition of subsidiaries*", "AcquisitionOfSubsidiariesNetOfCashAcquired", -1),
@@ -418,6 +437,7 @@ CASH_FLOW = Layout(
         Rule("financing", "repayment of lease liabilities",
              "PaymentsOfLeaseLiabilitiesClassifiedAsFinancingActivities", -1),
         Rule("financing", "interest paid", "InterestPaidClassifiedAsFinancingActivities", -1),
+        Rule("financing", "finance costs paid", "InterestPaidClassifiedAsFinancingActivities", -1),
         Rule("financing", "dividend paid to non-controlling interests*", "DividendsPaidToNonControllingInterests", -1),
         Rule("financing", "dividends paid to non-controlling interests*", "DividendsPaidToNonControllingInterests", -1),
         Rule("financing", "dividend* paid to minority*", "DividendsPaidToNonControllingInterests", -1),
@@ -434,7 +454,11 @@ CASH_FLOW = Layout(
              "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges"),
         Rule(None, "net increase / (decrease) in cash and cash equivalents",
              "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges"),
+        Rule(None, "net (decrease)*increase in cash and cash equivalents",
+             "IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges"),
         Rule(None, "exchange difference on translation of foreign currency cash and cash equivalents",
+             "EffectOfExchangeRateChangesOnCashAndCashEquivalents"),
+        Rule(None, "effect of exchange differences on restatement of foreign currency cash and cash equivalents",
              "EffectOfExchangeRateChangesOnCashAndCashEquivalents"),
     ),
 )
@@ -554,6 +578,7 @@ PROFIT_AND_LOSS_SCHEDULE_VI = Layout(
         Rule(None, "total expenses", "Expenses"),
         Rule(None, "profit before exceptional item*", "ProfitBeforeExceptionalItemsAndTax"),
         Rule("exceptional", "*", "ExceptionalItemsBeforeTax", add=True),
+        Rule(None, "exceptional item*", "ExceptionalItemsBeforeTax"),  # one line: "Add : Exceptional Items"
         Rule(None, "profit before tax*", "ProfitBeforeTax"),
         # Tax also includes MAT credit and fringe benefit tax: total only.
         Rule("tax", "", "TaxExpense"),
@@ -612,6 +637,8 @@ BALANCE_SHEET_ITEMS = frozenset(
 # --- Lines ---------------------------------------------------------------
 
 _LIGATURE = re.compile(r"(?<=[a-z])(f[il]) (?=[a-z])")  # "Profi t", "benefi t": a split ligature
+# How a total is worked out, after its label: "(I+II)", "(V - VI)", "(A+B+C)".
+_FORMULA = re.compile(r"\s*\((?:[ivx]+|[a-z])(?:\s*[+-]\s*(?:[ivx]+|[a-z]))+\)$")
 
 
 def normalise(label: str) -> str:
@@ -619,10 +646,20 @@ def normalise(label: str) -> str:
     label = _MARKER.sub("", _LETTERED.sub("", _NUMBERED.sub("", _ROMAN.sub("", label.strip()))).lower())
     label = _REFER.sub("", label.replace("’", "'").replace("–", "-").replace("\ufffe", "-"))
     label = re.sub(r"\s+", " ", label)
+    label = re.sub(r"^total\s*-\s*", "total ", label)  # "TOTAL - NON CURRENT ASSETS"
+    label = re.sub(r"^add\s*:\s*", "", label)  # "Add : Exceptional Items"
     label = re.sub(r"(?<=[a-z]) - (?=[a-z])", "-", label).strip(" :#*")  # "long - term"
     label = re.sub(r"\b(long|short) term\b", r"\1-term", label)  # "Long Term Borrowings"
     label = re.sub(r"\bnon current\b", "non-current", label)
     label = re.sub(r"\s*/\s*\(loss\)", "", label)  # "Profit/(loss) for the year"
+    label = _FORMULA.sub("", label)
+    if label.startswith("total"):
+        label = re.sub(r"\s*\([ivx]+\)$", "", label)  # "Total expenses (IV)"
+    # A loss-making year's lines name the profit lines they stand for:
+    # "Loss before tax", "Loss for the year", "Operating loss before...".
+    label = re.sub(r"^(operating |net )?loss (before|for|after)\b", r"\1profit \2", label)
+    label = re.sub(r"\bcomprehensive loss\b", "comprehensive income", label)
+    label = re.sub(r"^loss per (equity )?share", r"earnings per \1share", label)
     return re.sub(r"[#*]+$", "", label).strip(" :")
 
 
@@ -660,6 +697,41 @@ def split_line(line: str, columns: int) -> tuple[str, list[float]] | None:
     if not label_tokens:
         return None
     return " ".join(label_tokens), [_number(t) for t in tokens[-columns:]]
+
+
+_ROW_START = re.compile(r"^(?:\((?:[a-z]|[ivx]+)\)|[-–])$")
+
+
+def split_rows(line: str, columns: int) -> list[str]:
+    """Two printed rows that text extraction ran into one line: "(i)
+    Investments 10 *- *- (ii) Trade receivables 11 31.45 214.93". Split
+    where a row's values are followed by the start of another row: a marker
+    ("(ii)", "(b)") or a dash bullet, then a word."""
+    tokens = line.split()
+    for i in range(columns + 1, len(tokens) - 1):
+        if _ROW_START.match(tokens[i]) and tokens[i + 1][:1].isalpha() \
+                and split_line(" ".join(tokens[:i]), columns):
+            return [" ".join(tokens[:i])] + split_rows(" ".join(tokens[i:]), columns)
+    return [line]
+
+
+def drop_running_totals(lines: list[str], columns: int) -> list[str]:
+    """A section's last line printed with the section's total beside it,
+    year by year: "Dividend paid (146.38) 510.97 (102.79) (32.12)", the
+    total repeated on its own line below ("Net cash ... (C) 510.97
+    (32.12)"). Keep the line's own values."""
+    out = []
+    for i, line in enumerate(lines):
+        tokens = line.split()
+        wide = tokens[-2 * columns:]
+        if len(tokens) > 2 * columns and all(_is_value(t) for t in wide) \
+                and not _is_value(tokens[-2 * columns - 1]):
+            totals = [_number(t) for t in wide[1::2]]
+            if any(_values_only(after, columns) == totals or (split_line(after, columns) or ("", None))[1] == totals
+                   for after in lines[i + 1:i + 4]):
+                line = " ".join(tokens[:-2 * columns] + wide[0::2])
+        out.append(line)
+    return out
 
 
 def _merge(a: str, b: str) -> str | None:
@@ -739,13 +811,17 @@ def _is_column_header(line: str) -> bool:
 
 _FURNITURE = re.compile(
     r"annual report \d{4}-\d{2}|financial statements|"
-    r"(statement of (cash flows?|profit and loss)|balance sheet)(\s*(\||i)?\s*\d{1,3})?$", re.I)
+    r"^membership n(?:o|umber)\b|^(?:firm registration|din)\b|"  # the signatures
+    r"(statement of (cash flows?|profit and loss)|balance sheet)(\s*\((contd\.?|continued)\))?(\s*(\||i)?\s*\d{1,3})?$", re.I)
 
 
 def _is_page_furniture(line: str) -> bool:
     """Running headers and footers: "Standalone Statement of Cash Flows",
-    "Integrated Annual Report 2020-21 Standalone Financial Statements | 273"."""
-    return _FURNITURE.search(line.strip()) is not None
+    "Integrated Annual Report 2020-21 Standalone Financial Statements | 273",
+    a two-page spread's page numbers "114 115"."""
+    spread = re.fullmatch(r"(\d{1,3}) (\d{1,3})", line.strip())
+    return _FURNITURE.search(line.strip()) is not None or (
+        spread is not None and int(spread[2]) == int(spread[1]) + 1)
 
 
 def _is_repeated_header(line: str) -> bool:
@@ -753,7 +829,8 @@ def _is_repeated_header(line: str) -> bool:
     label = normalise(_UNIT.sub("", line))
     return _UNIT.search(line) is not None and not label or label in (
         "year ended", "as at", "note", "note year ended", "note as at", "year ended year ended",
-    )
+        "for the year ended",
+    ) or _is_unit_line(line)
 
 
 def _open_brackets(text: str) -> int:
@@ -785,6 +862,21 @@ def _has_rows(page: str, prefixes: tuple[str, ...]) -> bool:
     return all(
         any(fnmatchcase(label, wording + "*") for wording in p.split("|") for label in labels)
         for p in prefixes
+    )
+
+
+def _ends_here(page: str, layout: Layout) -> bool:
+    """The statement's last line is on this page: as a row, or as a heading
+    over the rows that hold its figures ("Earnings per equity share" over
+    "Basic" and "Diluted")."""
+    if _has_rows(page, layout.last[:1]):
+        return True
+    lines = [l for l in page.splitlines() if l.strip()]
+    return any(
+        (_heading_with_note(line) or not _has_values(line))
+        and any(fnmatchcase(normalise(_heading_with_note(line) or line), w + "*") for w in layout.last[0].split("|"))
+        and any(_has_values(after) for after in lines[i + 1:i + 3])
+        for i, line in enumerate(lines)
     )
 
 
@@ -846,6 +938,8 @@ def _rows(layout: Layout, lines: list[str], n: int, statement: Statement) -> lis
             pending, line = [], joined_text
         split = split_line(line, n)
         unlabelled = False
+        if split is None and _is_page_furniture(line):
+            continue
         if split is None:
             only = _values_only(line, n)
             if only is not None and [int(v) for v in only] == [int(c[:4]) for c in statement.columns]:
@@ -870,7 +964,10 @@ def _rows(layout: Layout, lines: list[str], n: int, statement: Statement) -> lis
                     continue
                 else:
                     split, unlabelled = ("", only), True  # a section's unlabelled total
-            elif _DATE.search(line) or _is_repeated_header(line) or _is_page_furniture(line):
+            elif _is_repeated_header(line) or _is_page_furniture(line):
+                pending = []  # a continuation's title and header: no label starts here
+                continue
+            elif _DATE.search(line):
                 continue  # a continuation page's header, a footer title, or a sign-off
             elif _open_brackets(line) > 0:
                 pending.append(line)  # a label whose bracketed note continues below
@@ -934,8 +1031,17 @@ def _rows(layout: Layout, lines: list[str], n: int, statement: Statement) -> lis
             if at < len(rows) and at and rows[at - 1].kind == "total" and rows[at - 1].section == total_of \
                     and not rows[at - 1].label:
                 rows[at - 1].kind = "group"
-                for r in rows[at:]:
+                for i, r in enumerate(rows[at:], at):
                     r.kind, r.section = "line", total_of
+                    # An unlabelled sum of the lines under its heading
+                    # ("(f) Financial assets" over (i) to (iii)) is their
+                    # subtotal, not another line.
+                    under = [x for x in rows[at:i] if x.kind == "line" and x.heading == r.heading]
+                    if not r.label and r.heading and len(under) >= 2 and all(
+                        abs(v - sum(x.values[col] or 0.0 for x in under)) <= 0.5 * len(under)
+                        for col, v in enumerate(r.values)
+                    ):
+                        r.kind = "group"
         elif any(_starts(joined, p) or _starts(own, p) for p in layout.subtotals):
             row.kind = "subtotal"
         elif any(_starts(joined, p) or _starts(own, p) for p in layout.globals):
@@ -1021,7 +1127,14 @@ def _repair(rows: list[Row], n: int, statement: Statement) -> None:
 
 
 def _map(layout: Layout, rows: list[Row], statement: Statement, unreliable: set) -> None:
+    # A plain "Diluted" is earnings per share only when it's the statement's
+    # one diluted line: not under each of several headings (continuing,
+    # discontinued, both), nor a share count below "Diluted (₹)".
+    ambiguous = {own for own in ("diluted",) if sum(r.own.startswith(own) for r in rows) > 1}
+    gross: dict[str, bool] = {}  # items set from a "(Gross)" line
     for row in rows:
+        if row.own in ambiguous:
+            continue
         children = layout.summed.get(row.heading, ())
         item = sign = None
         if children and row.own.startswith(children):
@@ -1042,10 +1155,15 @@ def _map(layout: Layout, rows: list[Row], statement: Statement, unreliable: set)
                 None if a is None or b is None else round(a + b, 2)
                 for a, b in zip(statement.values[item], values)
             ]
+        elif item in statement.values and row.own.endswith("(net)") and gross.get(item):
+            # "Revenue from operations (Gross)", "Less: Excise duty",
+            # "Revenue from operations (Net)": the item is the net figure.
+            statement.values[item], gross[item] = values, False
         elif item in statement.values:
             statement.warnings.append(f"page {statement.page}: {row.label!r} appears twice; kept the first")
         else:
             statement.values[item] = values
+            gross[item] = row.own.endswith("(gross)")
 
 
 def _income_from_operations(statement: Statement) -> None:
@@ -1127,6 +1245,27 @@ def _settle_tax_sign(statement: Statement) -> None:
                     v[item][col] = -v[item][col]
 
 
+def _net_change_adds_up(statement: Statement) -> None:
+    """The net change in cash before exchange effects is operating plus
+    investing plus financing. A year where it isn't was printed after the
+    effect of exchange rates, which it includes: drop it for that year."""
+    v = statement.values
+    net = v.get("IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges")
+    parts = [v.get(f"CashFlowsFromUsedIn{s}Activities") for s in ("Operating", "Investing", "Financing")]
+    if net is None or any(p is None for p in parts):
+        return
+    for col, value in enumerate(net):
+        if value is None or any(p[col] is None for p in parts):
+            continue
+        added = sum(p[col] for p in parts)
+        if abs(value - added) > 1.5:
+            net[col] = None
+            statement.warnings.append(
+                f"page {statement.page}: net change in cash ({statement.columns[col]}) is {value:,.0f} but "
+                f"operating, investing and financing add up to {added:,.0f}; it includes the effect of "
+                "exchange rates, so it's left out for that year")
+
+
 def _body_start(layout: Layout, lines: list[str]) -> int | None:
     """Index of the statement's first section heading or row; the lines
     before it are the header (title, unit, column dates)."""
@@ -1136,7 +1275,7 @@ def _body_start(layout: Layout, lines: list[str]) -> int | None:
             return i
         if ((split_line(line, 2) or split_line(line, 3)) and not _is_column_header(line)) or (
             _values_only(line, 2) or _values_only(line, 3)
-        ) and not _is_year_header(line):
+        ) and not _is_year_header(line) and not _is_page_furniture(line):
             # A section heading or label wrapped over the lines before the
             # first row ("I. Revenue from operations / (Net of excise duty)").
             start = i
@@ -1173,6 +1312,12 @@ def parse_statement(layout: Layout, page: str, page_number: int,
     header = lines[:body_at]
     head_text = " ".join(header).lower()
     unit = _unit("\n".join(header))
+    unit_below = not unit
+    if not unit:
+        # Text extraction can put the title and unit below the table: take
+        # the page's unit lines, when they agree.
+        stated = {_unit(l) for l in lines[body_at:] if _is_unit_line(l)}
+        unit = stated.pop() if len(stated) == 1 else None
     columns = []
     year_header = any(_is_year_header(l) for l in header)
     # Text above the unit line can be an accounting-policy note with its own
@@ -1228,11 +1373,14 @@ def parse_statement(layout: Layout, page: str, page_number: int,
         statement.warnings.append(f"page {page_number}: no unit (crore/lakh) stated")
         return statement
     if len(columns) not in (2, 3):
+        if unit_below:
+            return None  # a unit stated elsewhere on a page that isn't a statement
         statement.warnings.append(f"page {page_number}: expected 2 or 3 dated columns, found {columns}")
         return statement
 
     n = len(columns)
-    rows = _rows(layout, lines[body_at:], n, statement)
+    body = drop_running_totals([part for line in lines[body_at:] for part in split_rows(line, n)], n)
+    rows = _rows(layout, body, n, statement)
     _repair(rows, n, statement)
     unreliable = set()
     for i, col, printed, added in _mismatches(rows, n):
@@ -1247,6 +1395,7 @@ def parse_statement(layout: Layout, page: str, page_number: int,
     _settle_exceptional_sign(statement)
     _total_tax(statement)
     _settle_tax_sign(statement)
+    _net_change_adds_up(statement)
     owners, profit = "ProfitOrLossAttributableToOwnersOfParent", "ProfitLossForPeriod"
     if not statement.consolidated and owners in statement.values and profit not in statement.values:
         # Older standalone statements: "profit for the year" has no minority
@@ -1300,7 +1449,19 @@ def _parts(page: str, layouts: tuple[Layout, ...]) -> list[str]:
     unit line. Split it there when each part is a statement of its own;
     otherwise (a statement continuing in the right half) keep it whole."""
     lines = page.splitlines()
-    units = [i for i, l in enumerate(lines) if _UNIT.search(l) and len(l.split()) <= 4]
+    units = [i for i, l in enumerate(lines) if _is_unit_line(l)]
+    if len(units) == 1:
+        # A statement starting below the end of another table (the changes
+        # in equity above the cash flows): it begins at its title, the lines
+        # without figures just above its unit line.
+        u = start = units[0]
+        while start > 0 and u - start < 3 and not _has_values(lines[start - 1]):
+            start -= 1
+        above, below = "\n".join(lines[:start]), "\n".join(lines[start:])
+        if sum(map(_has_values, lines[:start])) >= 5 and any(
+            _has_rows(below, l.required) and not _has_rows(above, l.required) for l in layouts
+        ):
+            return [below]
     if len(units) < 2:
         return [page]
     head = lines[:units[0]]
@@ -1340,7 +1501,7 @@ def statements(pages: list[str], layouts: tuple[Layout, ...] = LAYOUTS) -> list[
                 if layout.title_required and layout.title not in whole_page.lower():
                     continue
                 last_part = at == len(parts) - 1
-                if not _has_rows(page, layout.last[:1]) and number < len(pages) and last_part:
+                if not _ends_here(page, layout) and number < len(pages) and last_part:
                     page = _until_end_marker(layout, page) + "\n" + _continuation(layout, pages[number])
                     continued.add((layout.kind, number + 1))
                 statement = parse_statement(layout, page, number, year_end, whole_page)

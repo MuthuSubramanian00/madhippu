@@ -12,7 +12,8 @@ Python) produces one object:
     "file": "report.pdf",
     "sha256": "4fc4a071...",
     "pages": 384,
-    "pages_without_text": [2, 384]
+    "pages_without_text": [2, 384],
+    "pages_letter_spaced": []
   },
   "statements": [
     {
@@ -44,9 +45,9 @@ Python) produces one object:
 | `schema` | `madhippu/1`. Changes only when a field is removed or changes meaning; new fields can appear within a version. |
 | `madhippu_version` | The release that produced the output. Parsing improves between releases, so keep this with the numbers. |
 | `disclaimer` | Always present. Keep it with the data if you pass the data on. |
-| `source` | The file's name, its SHA-256, its page count, and the pages with no text layer (scans or images, which madhippu can't read). |
+| `source` | The file's name, its SHA-256, its page count, the pages with no text layer (scans or images, which madhippu can't read), and the pages whose text layer is damaged, spacing letters apart (added in 0.1.1). |
 | `statements` | Each statement found, in page order. |
-| `warnings` | About the document as a whole: pages without text, or no statements found. |
+| `warnings` | About the document as a whole: pages without text, a damaged text layer, or no statements found. |
 
 ## Statements
 

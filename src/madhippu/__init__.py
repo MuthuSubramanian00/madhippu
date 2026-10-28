@@ -5,7 +5,7 @@
     data = madhippu.to_dict(report)
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from madhippu.report import Report, parse, parse_pages, to_dict  # noqa: E402
 

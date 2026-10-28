@@ -1,0 +1,41 @@
+83
+EXAMPLE MOTORS LIMITED
+Note 2012 2011
+Revenue from Operations (Gross)....................................... 21 14,354.50 10,555.00 
+Less : Excise Duty.................................................... 1,500.95 1,094.75 
+Revenue from Operations (Net)......................................... 12,853.55 9,460.25 
+Other Income.......................................................... 22 265.80 234.15 
+Total Revenue......................................................... 13,119.35 9,694.40 
+EXPENSES :
+Cost of Materials Consumed............................................ 23 8,804.50 6,708.95 
+Purchases of Stock-in-Trade........................................... 24 1,292.60 757.25 
+Employee Benefits Expense............................................. 26 701.80 631.50 
+Finance Costs......................................................... 27 62.75 52.50 
+Depreciation and Amortisation Expense................................. 28 276.15 213.85 
+Other Expenses........................................................ 29 954.80 761.35 
+ 12,092.60 9,125.40 
+Less : Cost of Manufactured Products Capitalised...................... 73.55 50.85 
+Total Expenses........................................................ 12,019.05 9,074.55 
+Profit Before Exceptional Items and Tax............................... 1,100.30 619.85 
+Add : Exceptional Item................................................ 39 108.25 17.50 
+Profit Before Tax..................................................... 1,208.55 637.35 
+Less : Tax Expense
+ Current Tax........................................................... 503.45 361.65 
+ Deferred Tax (Net).................................................... 88.75 45.85 
+Profit for the year................................................... 616.35 229.85 
+EARNINGS PER EQUITY SHARE 40
+(Face value Rs. 5/- per share) (Rupees)
+Basic................................................................. 10.27 3.83 
+Diluted............................................................... 10.02 3.74 
+See accompanying notes to the Financial Statements
+Rupees crores
+Statement of Profit and Loss for the year ended 31st March, 2012
+In terms of our report attached
+Mumbai, 30th May, 2012 Mumbai, 30th May, 201284
+EXAMPLE MOTORS LIMITED
+Rupees crores
+2012 2011
+A. CASH FLOW FROM OPERATING ACTIVITIES :
+Profit before exceptional item and taxation........................... 1,100.30 619.85 
+Adjustments for :
+Depreciation, Amortisation and Impairment Expense..................... 276.15 213.85 

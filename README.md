@@ -90,8 +90,8 @@ data = madhippu.to_dict(report)  # the JSON shape
 
 ## What it has been tested on
 
-Every annual report of these companies on NSE, FY10 to FY26, checked on
-the author's machine before each release. "Complete" means all six
+Every annual report of the first three companies on NSE, FY10 to FY26,
+checked on the author's machine before each release. "Complete" means all six
 statements were found: consolidated and standalone balance sheet, profit and
 loss and cash flows.
 
@@ -99,10 +99,14 @@ loss and cash flows.
 |---|---|---|
 | TCS | FY10–FY26 | — |
 | Infosys | FY14–FY26 | FY10, FY11, FY13: scanned, or not on NSE. FY12: standalone balance sheet and P&L. FY18: consolidated P&L |
-| Mahindra & Mahindra | FY13–FY26 | FY10–FY12: some standalone statements and the consolidated P&L |
+| Mahindra & Mahindra | FY12–FY26 | FY10, FY11: the profit and loss statements |
+| KEC International | FY26 | Only FY26 checked so far |
+| Ather Energy | FY26 | Only FY26 checked so far (standalone only: no subsidiaries) |
 
 "Found" isn't "perfect": a statement can still carry warnings for sections
-that didn't add up. Another company's wording may need rules added; reports
+that didn't add up. A PDF whose text layer is damaged, spacing letters
+apart ("a ss ets"), is flagged rather than read; another copy of the same
+report, such as the one filed with the stock exchange, usually reads. Another company's wording may need rules added; reports
 of what didn't parse are welcome (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Limits

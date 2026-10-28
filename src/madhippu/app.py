@@ -100,8 +100,9 @@ def parse_bytes(data: bytes, filename: str) -> Report:
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp) / "report.pdf"
         path.write_bytes(data)
-        return parse_pages(pdf.pages(path), file=filename,
-                           sha256=hashlib.sha256(data).hexdigest())
+        texts, letter_spaced = pdf.read(path)
+        return parse_pages(texts, file=filename, sha256=hashlib.sha256(data).hexdigest(),
+                           letter_spaced=letter_spaced)
 
 
 def _safe_name(filename: str) -> str:

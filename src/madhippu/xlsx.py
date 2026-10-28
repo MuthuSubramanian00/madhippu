@@ -41,6 +41,7 @@ def _about(ws, report: Report) -> None:
         ("SHA-256", report.sha256),
         ("Pages", report.page_count),
         ("Pages without text", ", ".join(map(str, report.pages_without_text)) or "none"),
+        ("Pages with letters spaced apart", ", ".join(map(str, report.pages_letter_spaced)) or "none"),
         ("madhippu version", __version__),
         ("Schema", SCHEMA),
     ]

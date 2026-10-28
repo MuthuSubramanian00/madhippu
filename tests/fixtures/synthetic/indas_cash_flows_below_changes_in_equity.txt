@@ -1,0 +1,102 @@
+Consolidated
+FINANCIAL STATEMENTS
+130 Integrated Annual Report 2025-26 131
+Example Engineering Limited
+Integrated Annual Report 2025-26
+Consolidated Statement of changes in equity
+for the year ended March 31, 2026 A. EQUITY SHARE CAPITAL Particulars As at March 31, 2026 As at March 31, 2025 Nos. ` in crore Nos. ` in crore Equity Shares Outstanding at the beginning of the year 200,000,000 40.00 200,000,000 40.00 B. OTHER EQUITY ` in Crore Particulars Reserves and Surplus Other Reserves Total Securities 
+Premium
+General 
+Reserve
+Retained 
+Earnings
+Effective 
+portion of 
+cash flow 
+Hedges
+Balance as at April 01, 2024 300.00 150.00 2,100.00 10.00 2,560.00
+Profit for the year - - 210.45 - 210.45
+Other Comprehensive Income for the year - - (0.15) 22.45 22.30
+Dividend paid - - (50.00) - (50.00)
+Balance as at March 31, 2025 300.00 150.00 2,260.30 32.45 2,742.75
+Profit for the year - - 250.15 - 250.15
+Dividend paid - - (60.00) - (60.00)
+The above Consolidated Statement of Changes in Equity should be read in conjunction with the accompanying notes.
+In terms of our report of even date
+For Example & Co. Chartered Accountants
+Firm Registration Number: 000000N/N000000
+For and on behalf of the Board of Directors
+Chairman Managing Director
+DIN - 00000001 DIN - 00000002
+Partner
+Membership Number : 100000
+Chief Financial Officer Company Secretary
+Place : Mumbai Place : Mumbai
+Date : May 15, 2026 Date : May 15, 2026
+Consolidated Statement of Cash Flows
+for the year ended March 31, 2026
+` in Crore
+Particulars For the year ended
+March 31, 2026
+For the year ended
+March 31, 2025
+A. CASH FLOW FROM OPERATING ACTIVITIES
+PROFIT FOR THE YEAR AFTER TAX 295.20 131.60
+Adjustments for:
+Income tax expense 99.40 57.80
+Depreciation and amortisation expense 110.40 100.30
+Finance costs 350.20 340.10
+Interest income (20.15) (25.40)
+ 539.85 472.80
+ 835.05 604.40
+Changes in assets and liabilities
+Adjustments for (increase)/decrease in operating assets:
+Inventories (89.65) 40.20
+Trade receivables (505.30) (420.10)
+Contract assets (680.70) (910.40)
+(1,275.65) (1,290.30)
+Adjustments for increase / (decrease) in operating liabilities:
+Trade payables 320.40 610.30
+Contract liabilities 49.80 120.70
+ 370.20 731.00
+CASH FLOW (USED IN)/GENERATED FROM OPERATIONS (70.40) 45.10
+Refund/ (Payment) of taxes (net) (110.25) 35.60
+NET CASH FLOW (USED)/GENERATED FROM OPERATING ACTIVITIES (A) (180.65) 80.70
+B. CASH FLOW FROM INVESTING ACTIVITIES
+Capital expenditure on property, plant and equipment and intangible assets 
+(after adjustment of increase/decrease in capital work-in-progress)
+ (180.40) (95.30)
+Proceeds from sale of property, plant and equipment 12.50 8.20
+Interest received 20.15 25.40
+NET CASH FLOW USED IN INVESTING ACTIVITIES (B) (147.75) (61.70)Consolidated
+FINANCIAL STATEMENTS
+130 Integrated Annual Report 2025-26 131
+Example Engineering Limited
+Integrated Annual Report 2025-26
+Notes 
+forming part of the Consolidated Financial Statements as at and for the year ended March 31, 2026
+Consolidated Statement of Cash Flows
+for the year ended March 31, 2026
+` in Crore
+Particulars For the year ended
+March 31, 2026
+For the year ended
+March 31, 2025
+C. CASH FLOW FROM FINANCING ACTIVITIES
+Repayment of other than short-term borrowings (90.00) (150.00)
+Proceeds from other than short-term borrowings 240.00 120.00
+Increase / (decrease) in short-term borrowings (net) 600.00 (40.00)
+Finance costs paid (340.10) (330.20)
+Dividend paid (60.00) 349.90 (50.00) (450.20)
+NET CASH FLOW GENERATED FROM/(USED IN) FINANCING 
+ACTIVITIES (C)
+ 349.90 (450.20)
+NET (DECREASE)/INCREASE IN CASH AND CASH EQUIVALENTS 
+(A+B+C)
+ 21.50 (431.20)
+Cash and cash equivalents at the beginning of the year (Refer Note 15) 250.45 684.75
+Effect of exchange differences on restatement of foreign currency Cash and 
+cash equivalents
+ 6.40 (3.10)
+Cash and cash equivalents at the end of the year (Refer Note 15) 278.35 250.45
+The above consolidated statement of cash flows has been prepared under the “indirect method”.

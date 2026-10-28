@@ -84,7 +84,8 @@ def test_text_from_the_pdf_never_becomes_an_excel_formula(tmp_path):
     out = tmp_path / "out.xlsx"
     xlsx.write(report, out)
 
-    cell = load_workbook(out)["About"]["B10"]
+    [cell] = [c for row in load_workbook(out)["About"].iter_rows() for c in row
+              if isinstance(c.value, str) and "HYPERLINK" in c.value]
     assert cell.data_type == "s" and cell.value.startswith("=HYPERLINK")
 
 

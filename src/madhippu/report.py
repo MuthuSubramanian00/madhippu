@@ -33,23 +33,38 @@ class Report:
     pages_without_text: list[int]  # 1-based; scans need OCR, which madhippu doesn't do
     statements: list[statements.Statement] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+    pages_letter_spaced: list[int] = field(default_factory=list)  # 1-based; a damaged text layer
 
 
-def parse_pages(pages: list[str], file: str | None = None, sha256: str | None = None) -> Report:
+def _listed(numbers: list[int]) -> str:
+    more = len(numbers) - 10
+    return (f"page{'s' if len(numbers) > 1 else ''} {', '.join(map(str, numbers[:10]))}"
+            + (f" and {more} more" if more > 0 else ""))
+
+
+def parse_pages(pages: list[str], file: str | None = None, sha256: str | None = None,
+                letter_spaced: list[int] | None = None) -> Report:
+    """`letter_spaced`: pages whose text layer spaces letters apart
+    (pdf.read)."""
     report = Report(
         file=file,
         sha256=sha256,
         page_count=len(pages),
         pages_without_text=[n for n, p in enumerate(pages, 1) if not pdf.has_text(p)],
+        pages_letter_spaced=list(letter_spaced or []),
     )
     report.statements = sorted(statements.statements(pages), key=lambda st: st.page)
     if report.pages_without_text:
-        listed = ", ".join(map(str, report.pages_without_text[:10]))
-        more = len(report.pages_without_text) - 10
         report.warnings.append(
-            f"no text layer on page{'s' if len(report.pages_without_text) > 1 else ''} {listed}"
-            + (f" and {more} more" if more > 0 else "")
-            + " (scans or images); a statement on them can't be read"
+            f"no text layer on {_listed(report.pages_without_text)} (scans or images); "
+            "a statement on them can't be read"
+        )
+    if report.pages_letter_spaced:
+        report.warnings.append(
+            f"the PDF's text layer is damaged on {_listed(report.pages_letter_spaced)}: it spaces "
+            "letters and digits apart (\"a ss ets\", \"1, 35, 7 05\"), so words and figures there "
+            "may not read. Another copy of the report, such as the one filed with the stock "
+            "exchange (NSE or BSE), usually reads correctly"
         )
     if not report.statements:
         report.warnings.append("no financial statements found")
@@ -59,7 +74,8 @@ def parse_pages(pages: list[str], file: str | None = None, sha256: str | None = 
 def parse(path: Path) -> Report:
     path = Path(path)
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
-    return parse_pages(pdf.pages(path), file=path.name, sha256=digest)
+    texts, letter_spaced = pdf.read(path)
+    return parse_pages(texts, file=path.name, sha256=digest, letter_spaced=letter_spaced)
 
 
 def facts(st: statements.Statement) -> list[Fact]:
@@ -105,6 +121,7 @@ def to_dict(report: Report) -> dict:
             "sha256": report.sha256,
             "pages": report.page_count,
             "pages_without_text": report.pages_without_text,
+            "pages_letter_spaced": report.pages_letter_spaced,
         },
         "statements": [_statement_dict(st) for st in report.statements],
         "warnings": report.warnings,
