@@ -1,0 +1,60 @@
+Example Technologies Limited
+Annual Report 2023-24 Consolidated Financial Statements 113
+Consolidated Statement of Profit and Loss
+(` crore)
+Note Year ended 
+March 31, 2024
+Year ended 
+March 31, 2023
+Revenue from operations 12 96,420 89,705 
+Other income 13 1,812 1,390 
+TOTAL INCOME 98,232 91,095 
+Expenses
+Employee benefit expenses 14 55,930 51,204 
+Cost of equipment and software licences 15(a) 1,488 760 
+Finance costs 16 312 305 
+Depreciation and amortisation expense 2,010 1,955 
+Other expenses 15(b) 13,120 14,690 
+TOTAL EXPENSES 72,860 68,914 
+PROFIT BEFORE EXCEPTIONAL ITEM AND TAX 25,372 22,181 
+Exceptional item
+Provision for settlement of a legal claim 20 380 - 
+PROFIT BEFORE TAX 24,992 22,181 
+Tax expense
+Current tax 17 6,350 5,920 
+Deferred tax 17 14 (60) 
+TOTAL TAX EXPENSE 6,364 5,860 
+PROFIT FOR THE YEAR 18,628 16,321 
+OTHER COMPREHENSIVE INCOME (OCI)
+Items that will not be reclassified subsequently to profit or loss
+Remeasurement of defined employee benefit plans (1) 140 
+Net change in fair values of investments in equity shares carried at fair value 
+through OCI
+ (3) (1)
+Income tax on items that will not be reclassified subsequently to profit or loss (5) (30) 
+Items that will be reclassified subsequently to profit or loss
+Net change in fair values of investments other than equity shares carried at fair 
+value through OCI
+ 95 (270)
+Net change in intrinsic value of derivatives designated as cash flow hedges 5 13 
+Exchange differences on translation of financial statements of foreign operations 18 262 
+Income tax on items that will be reclassified subsequently to profit or loss (16) 94 
+TOTAL OTHER COMPREHENSIVE INCOME / (LOSSES) 93 208 
+TOTAL COMPREHENSIVE INCOME FOR THE YEAR 18,721 16,529 
+Profit for the year attributable to: 
+Shareholders of the Company 18,552 16,259 
+Non-controlling interests 76 62 
+ 18,628 16,321 
+Other comprehensive income for the year attributable to:
+Shareholders of the Company 118 209 
+Non-controlling interests (25) (1) 
+93 208 
+Total comprehensive income for the year attributable to:
+Shareholders of the Company 18,670 16,468 
+Non-controlling interests 51 61 
+18,721 16,529 
+Earnings per equity share:- Basic and diluted (`) 18 126.89 109.98 
+Weighted average number of equity shares 1,46,20,50,000 1,47,84,00,000
+NOTES FORMING PART OF THE CONSOLIDATED FINANCIAL STATEMENTS
+As per our report of even date attached For and on behalf of the Board
+Pune, April 18, 2024

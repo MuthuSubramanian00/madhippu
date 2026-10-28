@@ -1,0 +1,60 @@
+43
+Cash Flow Statement tatement tatement tatement for the year ended 31st March, 2010
+Rupees crores
+2010 2009
+A. CASH FLOW FROM OPERATING ACTIVITIES :
+Profit before exceptional items and taxation.......................... 1,378.00 513.10
+Adjustments for :
+Net Profit earned by Example Finance Limited from
+1st February, 2008 to 31st March, 2008 ............................... — 15.37
+Taxes and other adjustments on above ................................. — 5.50
+— 20.87
+Adjustments for : Depreciation/Amortisation .......................... 185.39 145.76
+(Profit)/Loss on Exchange (Net) ...................................... 7.13 3.15
+Investment and Interest Income ....................................... (130.90) (133.45)
+Interest, Commitment and Finance charges ............................. 78.43 67.06
+Profit on sale of investments (Net)................................... (5.20) (46.18)
+134.85 36.34
+Operating Profit before Working Capital changes....................... 1,512.85 549.44
+Changes in :
+Trade and other receivables........................................... (229.35) (49.69)
+Inventories .......................................................... (66.92) 88.01
+Trade and other payables ............................................. 294.04 257.57
+(2.23) 295.89
+Miscellaneous Expenditure (to the extent not written off or adjusted)
+incurred during the year ............................................. — (5.87)
+Cash generated from operations........................................ 1,510.62 839.46
+Income Taxes paid (Net of refunds).................................... (355.69) (50.15)
+NET CASH FROM OPERATING ACTIVITIES.................................... 1,154.93 789.31
+B. CASH FLOW FROM INVESTING ACTIVITIES :
+Purchase of fixed assets ............................................. (483.53) (464.87)
+Sale of fixed assets ................................................. 3.18 7.29
+Purchase of investments .............................................. (9,511.05) (8,559.30)
+Sale of investments .................................................. 9,245.45 8,097.87
+Interest received .................................................... 50.37 39.94
+Dividends received ................................................... 43.63 68.57
+Exceptional Items :
+Sales Proceeds (Net) on sale of Long Term Investments................. 46.07 —
+NET CASH USED IN INVESTING ACTIVITIES ................................ (605.88) (810.50)44
+EXAMPLE MOTORS LIMITED
+In terms of our report attached
+Mumbai, 28th May, 2010
+}
+Cash Flow Statement tatement tatement tatement (Contd.)
+Rupees crores
+2010 2009
+C. CASH FLOW FROM FINANCING ACTIVITIES :
+Proceeds from borrowings ............................................. 218.16 1,058.70
+Repayments of borrowings (including premium on prepayments)........... (371.99) (502.53)
+Interest, Commitment and Finance charges paid ........................ (114.74) (47.59)
+Dividends paid [including income tax on dividend Rs. 16.62 crores
+(2009 : Rs. 19.24 crores)] ........................................... (155.68) (160.13)
+NET CASH (USED IN)/FROM FINANCING ACTIVITIES ......................... (424.25) 348.45
+NET INCREASE/(DECREASE) IN CASH AND CASH EQUIVALENTS ................. 124.80 327.26
+CASH AND CASH EQUIVALENTS [Note 1] :
+Opening Balance ...................................................... 780.92 328.29
+Cash and Bank Balance acquired pursuant to the Schemes of
+Amalgamation ......................................................... — 126.88
+Cash and Bank Balance Transferred on transfer of Business ............ (9.10) (1.51)
+Closing Balance ...................................................... 896.62 780.92
+See Notes attached.

@@ -1,0 +1,67 @@
+Example Technologies Limited Annual Report 2016-17
+Consolidated Balance Sheet as at March 31, 2017, 2016 and April 1, 2015
+For and on behalf of the Board
+As per our report attached
+Pune, April 20, 2017
+(` crores)
+As at As at As at
+Note March 31, 2017 March 31, 2016 April 1, 2015
+ASSETS
+Non-current assets
+(a) Property, plant and equipment 4 4,812 4,655 4,210 
+(b) Capital work-in-progress 4 615 402 377 
+(c) Right-of-use assets 5 2,140 1,985 1,760 
+(d) Goodwill 6 920 920 905 
+(e) Other intangible assets 6 233 318 296 
+(e) Financial assets
+(i) Investments 7(a) 145 162 170 
+(ii) Trade receivables 7(b) 86 89 88 
+(iii) Loans 7(c) 5 41 38 
+(iv) Other financial assets 7(d) 1,206 1,034 987 
+(f) Deferred tax assets (net) 15 1,118 1,076 1,002 
+(g) Income tax assets (net) 702 891 840 
+(h) Other assets 8 1,349 1,122 1,013 
+Total non-current assets 13,331 12,695 11,686 
+Current assets
+(a) Inventories 9 14 12 11 
+(b) Financial assets
+(i) Investments 7(a) 12,480 14,215 9,870 
+(ii) Trade receivables 7(b) 21,993 20,306 17,575 
+(iii) Cash and cash equivalents 7(e) 3,905 2,866 3,310 
+(iv) Other balances with banks 7(f) 1,744 1,610 1,455 
+(v) Loans 7(c) 210 488 402 
+(vi) Other financial assets 7(d) 702 566 510 
+(b) Income tax assets (net) 61 4 9 
+(c) Other assets 8 4,918 4,077 3,660 
+Total current assets 46,027 44,144 36,802 
+TOTAL ASSETS 59,358 56,839 48,488 
+EQUITY AND LIABILITIES
+Equity
+(a) Share capital 13 120 122 122 
+(b) Other equity 14 36,862 35,519 29,371 
+Equity attributable to shareholders of the Company 36,982 35,641 29,493 
+Non-controlling interests 340 310 284 
+Total equity 37,322 35,951 29,777 
+Liabilities
+Non-current liabilities
+Financial liabilities
+Long-term borrowings 16 35 41 57 
+Lease liabilities 5 2,018 1,861 1,702 
+Other financial liabilities 7(g) 152 140 133 
+Employee benefit obligations 12 281 220 204 
+Deferred tax liabilities (net) 15 402 325 288 
+Unearned and deferred revenue 196 410 377 
+Total non-current liabilities 3,084 2,997 2,761 
+Current liabilities
+Financial liabilities
+Lease liabilities 5 620 598 541 
+Trade payables 7(h) 4,105 4,320 3,916 
+Other financial liabilities 7(g) 3,436 3,730 3,288 
+Unearned and deferred revenue 1,495 1,580 1,402 
+Other liabilities 10 2,680 2,011 1,870 
+Provisions 11 58 142 120 
+Employee benefit obligations 12 1,857 1,670 1,512 
+Income tax liabilities (net) 4,701 3,840 3,301 
+Total current liabilities 18,952 17,891 15,950 
+TOTAL EQUITY AND LIABILITIES 59,358 56,839 48,488 
+NOTES FORMING PART OF THE CONSOLIDATED FINANCIAL STATEMENTS

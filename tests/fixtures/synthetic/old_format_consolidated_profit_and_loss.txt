@@ -1,0 +1,45 @@
+48
+Schedule 2010
+Rs. in crores
+2009
+Rs. in crores
+INCOME
+1 Information technology and consultancy services 14542.61 13390.93
+2 Sale of equipment and software licences 471.86 515.51
+3 Other income, (net) N 136.04 (213.50)
+15150.51 13692.94
+EXPENDITURE
+4 Employee costs O 5439.79 4955.46
+5 Operation and other expenses P 5227.40 5366.08
+6 Interest 8.05 14.33
+7 Depreciation F 330.45 282.04
+11005.69 10617.91
+PROFIT BEFORE TAXES 4144.82 3075.03
+8 PROVISION FOR TAXES
+(a) Current tax (Refer note 15 to Schedule Q, page 74) 854.92 598.77
+(b) Deferred tax benefit (93.86) 19.36
+(c) Fringe benefit tax (2.29) 13.22
+(d) MAT credit entitlement (160.29) (211.87)
+598.48 419.48
+PROFIT FOR THE YEAR BEFORE MINORITY INTEREST AND SHARE 
+OF PROFIT OF ASSOCIATES
+3546.34 2655.55
+9 Minority interest 45.50 27.00
+10 Share of loss of associates 0.52 0.35
+NET PROFIT FOR THE YEAR 3500.32 2628.20
+11 Balance brought forward from previous year 5917.52 4344.11
+AMOUNT AVAILABLE FOR APPROPRIATION 9417.84 6972.31
+12 APPROPRIATIONS
+(a) Interim dividends on equity shares 587.16 440.37
+(b) Proposed final dividend on equity shares 1370.06 244.66
+(c) Tax on dividend 331.59 118.00
+(d) General Reserve 318.11 248.28
+(e) Balance carried to Balance Sheet 6810.92 5921.00
+9417.84 6972.31
+13 Earnings per share - Basic and diluted (Rs.)
+(Refer note 20 to Schedule Q, page 76)
+23.67 17.77
+14 NOTES TO ACCOUNTS Q
+Consolidated Profit and Loss Account for the year ended March 31, 2010
+As per our report attached For and on behalf of the Board
+Pune, April 22, 2010

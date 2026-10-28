@@ -1,0 +1,54 @@
+52 Consolidated Financial Statements
+Example Technologies Limited Annual Report 2013-14
+Consolidated Balance Sheet as at March 31, 2014 
+ (` crores)
+Note
+As at 
+March 31, 2014
+As at 
+March 31, 2013
+I. EQUITY AND LIABILITIES
+Shareholders’ funds
+(a) Share capital 3 97.52 97.52
+(b) Reserves and surplus 4 24327.54 19081.29
+24425.06 19178.81
+Minority interest 351.49 345.19
+Non-current liabilities
+(a) Long-term borrowings 5 63.18 71.40
+(b) Deferred tax liabilities (net) 6 (a) 151.62 117.05
+(c) Other long-term liabilities 7 368.90 222.31
+(d) Long-term provisions 8 191.44 173.20
+775.14 583.96
+Current liabilities
+(a) Short-term borrowings 9 63.11 39.72
+(b) Trade payables 2748.36 2119.80
+(c) Other current liabilities 10 1797.59 1529.88
+(d) Short-term provisions 11 3170.46 2101.71
+7779.52 5791.11
+TOTAL 33331.21 25899.07
+II. ASSETS
+Non-current assets
+(a) Fixed assets 12
+(i) Tangible assets 3492.40 2974.65
+(ii) Intangible assets 119.52 126.50
+(iii) Capital work-in-progress 1573.04 940.97
+5184.96 4042.12
+(b) Non-current investments 13 1129.57 480.71
+(c) Deferred tax assets (net) 6 (b) 208.54 154.01
+(d) Long-term loans and advances 14 3617.53 2637.62
+(e) Other non-current assets 15 767.20 1218.64
+(f) Goodwill (on consolidation) 1126.36 1778.07
+12034.16 10311.17
+Current assets
+(a) Current investments 16 575.13 461.22
+(b) Inventories 17 7.55 10.50
+(c) Unbilled revenue 18 1988.62 1559.37
+(d) Trade receivables 19 9050.71 6997.83
+(e) Cash and bank balances 20 7169.83 3360.58
+(f) Short-term loans and advances 21 2140.13 2801.61
+(g) Other current assets 22 365.08 396.79
+21297.05 15587.90
+TOTAL 33331.21 25899.07
+III. NOTES FORMING PART OF THE CONSOLIDATED FINANCIAL STATEMENTS 1-46
+As per our report attached For and on behalf of the Board
+Pune, April 21, 2014

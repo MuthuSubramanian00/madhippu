@@ -1,0 +1,47 @@
+84 | Standalone financial statements Example Software Limited Annual Report 2016-17
+Statement of Profit and Loss
+in ` crore, except equity share and per equity share data
+Particulars Note Year ended March  31,
+2017 2016
+Revenue from operations 2.18 24,310 22,140 
+Other income, net 2.19 1,250 1,232 
+Total income 25,560 23,372 
+Expenses
+Employee benefit expenses 2.20 12,690 11,570 
+Deferred consideration pertaining to acquisition – 61 
+Cost of technical sub-contractors 1,972 1,811 
+Travel expenses 672 679 
+Cost of software packages and others 2.20 506 430 
+Communication expenses 153 128 
+Consultancy and professional charges 221 231 
+Depreciation and amortization expense 2.3 & 2.4 546 457 
+Other expenses 2.20 1,044 789 
+Total expenses 17,804 16,156 
+Profit before tax 7,756 7,216 
+Tax expense
+Current tax 2.17 2,078 2,008 
+Deferred tax 2.17 21 4 
+Profit for the period 5,657 5,204 
+Other comprehensive income 
+Items that will not be reclassified subsequently to profit or loss
+Remeasurement of the net defined benefit liability / asset (17) (1) 
+Equity instruments through other comprehensive income 2.5 & 2.17 (2) – 
+(19) (1) 
+Items that will be reclassified subsequently to profit or loss
+Fair value changes on cash flow hedges, net 16 – 
+Fair value changes on investments, net 2.5 (4) – 
+12 –
+Total other comprehensive income, net of tax (7) (1) 
+Total comprehensive income for the period 5,650 5,203 
+Earnings per equity share 
+Equity shares of par value ` 5 each 
+Basic (`) 60.07 55.26 
+Diluted (`) 60.03 55.26 
+Weighted average equity shares used in computing earnings per equity 
+share
+Basic 2.23 94,17,00,000 94,17,00,000 
+Diluted 2.23 94,23,00,000 94,17,00,000 
+The accompanying notes form an integral part of the standalone financial statements.
+As per our report of even date attached
+Bengaluru
+April  21, 2017

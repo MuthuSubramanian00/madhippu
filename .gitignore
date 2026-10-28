@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+.DS_Store
+
+# Reports and madhippu's output: never committed. Tests use the text
+# excerpts under tests/fixtures/ instead.
+*.pdf
+*.json
+*.xlsx

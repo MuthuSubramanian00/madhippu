@@ -1,0 +1,77 @@
+Example Technologies Limited
+Annual Report 2023-24 Consolidated Financial Statements 116
+Consolidated Statement of Cash Flows
+(` crore)
+Year ended 
+March 31, 2024
+Year ended 
+March 31, 2023
+CASH FLOWS FROM OPERATING ACTIVITIES
+Profit for the year 18,628 16,321 
+Adjustments for:
+Depreciation and amortisation expense 2,010 1,955 
+Allowance for expected credit losses (net) 44 57 
+Tax expense 6,364 5,860 
+Net (gain) / loss on lease modification (3) 1 
+Unrealised foreign exchange gain (7) (75) 
+Net gain on disposal of property, plant and equipment (2) (11) 
+Net gain on disposal / fair valuation of investments (125) (90) 
+Interest income (1,512) (1,300) 
+Dividend income (16) (6) 
+Finance costs 312 305 
+Operating profit before working capital changes 25,693 23,017 
+Net change in
+Inventories (2) (3) 
+Trade receivables
+Billed (1,330) (2,600) 
+Unbilled (2) (470) 
+Loans and other financial assets (120) 104 
+Other assets (1,264) (10) 
+Trade payables (253) 814 
+Unearned and deferred revenue (296) 16 
+Other financial liabilities (278) 567 
+Other liabilities and provisions 791 (102) 
+Cash generated from operations 22,939 21,333 
+Taxes paid (net of refunds) (5,010) (5,190) 
+Net cash generated from operating activities 17,929 16,143 
+CASH FLOWS FROM INVESTING ACTIVITIES
+Bank deposits placed (3,790) (1,820) 
+Purchase of investments# (56,400) (51,900) 
+Payment for purchase of property, plant and equipment (880) (1,013) 
+Payment including advances for acquiring right-of-use assets (12) (85) 
+Payment for purchase of intangible assets (177) (142) 
+Proceeds from bank deposits 3,236 2,501 
+Proceeds from disposal / redemption of investments# 58,880 49,075 
+Proceeds from disposal of property, plant and equipment 7 15 Example Technologies Limited
+Annual Report 2023-24 Consolidated Financial Statements 117
+(` crore)
+Year ended 
+March 31, 2024
+Year ended 
+March 31, 2023
+Interest received 1,196 1,232 
+Dividend received 10 5 
+Net cash generated from investing activities 2,070 (2,132) 
+CASH FLOWS FROM FINANCING ACTIVITIES
+Repayment of lease liabilities (646) (606) 
+Interest paid (280) (312) 
+Dividend paid (10,055) (16,540) 
+Dividend paid to non-controlling interests (32) (25) 
+Tax on buy-back of equity shares (Refer note 13) (1,584) (1,677) 
+Buy-back of equity shares (Refer note 13) (6,800) - 
+Net cash used in financing activities (19,397) (19,160) 
+Net change in cash and cash equivalents 602 (5,149) 
+Cash and cash equivalents at the beginning of the year 2,866 7,811 
+Exchange difference on translation of foreign currency cash and cash equivalents 26 204 
+Cash and cash equivalents at the end of the year 3,494 2,866 
+Components of cash and cash equivalents
+Balances with banks
+In current accounts 1,402 1,115 
+In deposit accounts 2,092 1,751 
+ 3,494 2,866 
+#
+Purchase of investments and proceeds from their disposal include amounts held by trusts for specified purposes.
+NOTES FORMING PART OF THE CONSOLIDATED FINANCIAL STATEMENTS
+Consolidated Statement of Cash Flows
+As per our report of even date attached For and on behalf of the Board
+Pune, April 18, 2024

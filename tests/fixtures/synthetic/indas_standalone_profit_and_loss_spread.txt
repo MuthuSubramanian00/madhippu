@@ -1,0 +1,59 @@
+Example Technologies Limited Annual Report 2019-20 Standalone Financial Statements I 141
+(` crore)
+Note Year ended 
+March 31, 2020
+Year ended 
+March 31, 2019
+Revenue 10 52,840 49,600 
+Other income 11 3,210 3,050 
+TOTAL INCOME 56,050 52,650 
+Expenses
+Employee benefit expenses 12 26,120 23,890 
+Cost of equipment and software licences 13(a) 642 806 
+Depreciation and amortisation expense 1,087 690 
+Other expenses 13(b) 11,050 10,790 
+Finance costs 14 299 68 
+TOTAL EXPENSES 39,198 36,244 
+PROFIT BEFORE TAX 16,852 16,406 
+Tax expense
+Current tax 15 3,630 4,000 
+Deferred tax 15 (113) 281 
+TOTAL TAX EXPENSE 3,517 4,281 
+PROFIT FOR THE YEAR 13,335 12,125 
+OTHER COMPREHENSIVE INCOME (OCI)
+Items that will not be reclassified subsequently to 
+profit or loss
+Remeasurement of defined employee benefit plans (165) (7) 
+Net change in fair values of investments in equity 
+shares carried at fair value through OCI
+ - (1)
+Income tax on items that will not be reclassified 
+subsequently to profit or loss
+ 35 1 
+NOTES FORMING PART OF THE STANDALONE FINANCIAL STATEMENTS
+As per our report of even date attached For and on behalf of the Board
+Pune, April 22, 2020
+Standalone Statement of Profit and Loss
+(` crore)
+Note Year ended 
+March 31, 2020
+Year ended 
+March 31, 2019
+Items that will be reclassified subsequently to profit 
+or loss
+Net change in fair values of investments other than 
+equity shares carried at fair value through OCI
+386 171 
+Net change in intrinsic value of derivatives 
+designated as cash flow hedges 
+(38) 62
+Net change in time value of derivatives designated 
+as cash flow hedges
+ (21) 18 
+Income tax on items that will be reclassified 
+subsequently to profit or loss
+(127) (69)
+TOTAL OTHER COMPREHENSIVE INCOME / (LOSSES) 70 175 
+TOTAL COMPREHENSIVE INCOME FOR THE YEAR 13,405 12,300 
+Earnings per equity share:- Basic and diluted (`) 16 88.19 79.23 
+Weighted average number of equity shares 1,51,20,00,000 1,53,04,00,000
