@@ -6,92 +6,87 @@
 <title>madhippu</title>
 <style>
 :root {
-  --bg: #f7f6f2; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6a64; --line: #e3e1d9;
-  --accent: #1f5f4a; --accent-text: #ffffff; --warn-bg: #fff4dc; --warn-line: #e9c46a; --warn-text: #6b4b00;
-  --error-bg: #fde8e6; --error-text: #8a1f12; --row: #faf9f5;
+  --bg: #ffffff; --text: #000000; --muted: #666666; --line: #000000; --faint: #dddddd;
+  --link: #0000ee; --warn: #8a5a00; --error: #c00000;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161614; --panel: #201f1c; --text: #ecebe6; --muted: #a09e96; --line: #34332e;
-    --accent: #5fbf9a; --accent-text: #0d1f18; --warn-bg: #3a2f12; --warn-line: #8a6d1f; --warn-text: #f3d68a;
-    --error-bg: #3d1a15; --error-text: #f4b3a8; --row: #1b1a18;
+    --bg: #000000; --text: #e8e8e8; --muted: #8a8a8a; --line: #e8e8e8; --faint: #2a2a2a;
+    --link: #8ab4ff; --warn: #e0b050; --error: #ff6b6b;
   }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text);
-  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  font: 14px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
 main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
-header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
-h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
-.tamil { color: var(--muted); }
-.lead { color: var(--muted); margin: 0 0 20px; }
+header { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--line);
+  padding-bottom: 8px; margin-bottom: 8px; }
+h1 { font-size: 14px; font-weight: 700; margin: 0; }
+h2, h3 { font-size: 14px; font-weight: 700; margin: 0; }
+.lead { color: var(--muted); margin: 0 0 24px; }
 .quit { margin-left: auto; }
-button, .button { font: inherit; border-radius: 8px; padding: 8px 14px; cursor: pointer;
-  border: 1px solid var(--line); background: var(--panel); color: var(--text); text-decoration: none;
-  display: inline-block; }
-.button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
-button:hover, .button:hover { filter: brightness(0.96); }
-a { color: var(--accent); }
-#drop { display: block; border: 2px dashed var(--line); border-radius: 14px; background: var(--panel);
-  padding: 48px 20px; text-align: center; cursor: pointer; transition: border-color .15s; }
-#drop.over { border-color: var(--accent); }
-#drop strong { display: block; font-size: 18px; margin-bottom: 6px; }
-#drop p { margin: 4px 0; color: var(--muted); }
-.note { font-size: 13px; color: var(--muted); }
-.busy { text-align: center; padding: 48px 20px; }
-.spinner { width: 28px; height: 28px; border: 3px solid var(--line); border-top-color: var(--accent);
-  border-radius: 50%; margin: 0 auto 12px; animation: spin .8s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.error { background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 12px 14px; margin: 16px 0; }
-.summary { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-.summary h2 { font-size: 18px; margin: 0 0 4px; overflow-wrap: anywhere; }
+a { color: var(--link); }
+button, .button { font: inherit; color: var(--text); background: none; border: 1px solid var(--line);
+  border-radius: 0; padding: 2px 10px; cursor: pointer; text-decoration: none; display: inline-block; }
+button:hover, .button:hover, button:focus-visible, .button:focus-visible { background: var(--text); color: var(--bg); outline: none; }
+#drop { display: block; border: 1px dashed var(--line); padding: 48px 16px; text-align: center; cursor: pointer; }
+#drop.over, #drop:focus-visible { border-style: solid; outline: none; background: var(--faint); }
+#drop p { margin: 0; }
+.note { color: var(--muted); }
+.busy { padding: 48px 0; }
+.busy .dots::after { content: ""; animation: dots 1.2s steps(4) infinite; }
+@keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+.error { color: var(--error); border: 1px solid var(--error); padding: 8px 12px; margin: 16px 0; }
+.error::before { content: "error: "; font-weight: 700; }
+.summary { margin-bottom: 24px; }
+.summary h2 { overflow-wrap: anywhere; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-.warnings { background: var(--warn-bg); color: var(--warn-text); border-left: 3px solid var(--warn-line);
-  border-radius: 6px; padding: 8px 12px; margin: 10px 0; font-size: 14px; }
-.warnings ul { margin: 4px 0 0; padding-left: 18px; }
-nav.toc { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 16px; }
-nav.toc a { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
-  color: var(--text); text-decoration: none; background: var(--panel); }
-section.st { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
-section.st > .head { padding: 14px 16px 6px; display: flex; gap: 8px 16px; align-items: baseline; flex-wrap: wrap; }
-section.st h3 { margin: 0; font-size: 17px; }
-.meta { color: var(--muted); font-size: 13px; }
-.meta a { color: var(--accent); }
+.warnings { color: var(--warn); margin: 8px 0; }
+.warnings > div::before, .warnings li::before { content: "! "; }
+.warnings ul { list-style: none; margin: 0; padding: 0; }
+nav.toc { margin: 0 0 24px; }
+nav.toc a { display: block; }
+nav.toc a::before { content: "→ "; color: var(--muted); }
+section.st { margin-bottom: 32px; scroll-margin-top: 16px; }
+section.st > .head { display: flex; gap: 4px 16px; align-items: baseline; flex-wrap: wrap;
+  border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+section.st .warnings { margin: 8px 0; }
+.meta { color: var(--muted); }
 .scroll { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 14px; }
-th, td { padding: 6px 16px; border-top: 1px solid var(--line); }
-td:first-child { min-width: 15em; }
-@media (max-width: 600px) { th, td { padding: 6px 10px; } td:first-child { min-width: 12em; } }
-th { text-align: right; font-weight: 600; white-space: nowrap; color: var(--muted); }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 3px 12px 3px 0; border-bottom: 1px solid var(--faint); }
+td:first-child { min-width: 22em; }
+@media (max-width: 600px) { td:first-child { min-width: 14em; } }
+th { text-align: right; font-weight: 700; white-space: nowrap; border-bottom-color: var(--line); }
 th:first-child, td:first-child { text-align: left; }
+th:last-child, td:last-child { padding-right: 0; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 td.dropped { color: var(--muted); cursor: help; }
-tbody tr:nth-child(even) { background: var(--row); }
-footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+tbody tr:hover { background: var(--faint); }
+footer { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 8px; color: var(--muted); }
+footer p { margin: 4px 0; }
 .hidden { display: none; }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>madhippu</h1><span class="tamil">மதிப்பு</span>
-    <button class="quit" id="quit" title="Stop madhippu">Quit</button>
+    <h1>madhippu</h1>
+    <button class="quit" id="quit" title="Stop madhippu">quit</button>
   </header>
   <p class="lead">Reads the balance sheet, profit and loss and cash flows out of an Indian annual report.</p>
 
   <div id="start">
     <label id="drop" tabindex="0">
-      <strong>Drop an annual report (PDF) here</strong>
-      <p>or click to choose a file</p>
-      <p class="note">The file stays on this computer. Nothing is uploaded to the internet.</p>
+      <p>[ drop an annual report PDF here, or click to choose ]</p>
+      <p class="note">the file stays on this computer. nothing is uploaded.</p>
       <input id="file" type="file" accept="application/pdf,.pdf" hidden>
     </label>
   </div>
 
   <div id="busy" class="busy hidden">
-    <div class="spinner"></div>
-    <div>Reading <span id="busy-name"></span>…</div>
-    <div class="note">A long report can take a minute.</div>
+    <div>reading <span id="busy-name"></span><span class="dots"></span></div>
+    <div class="note">a long report can take a minute.</div>
   </div>
 
   <div id="error" class="error hidden"></div>
@@ -168,10 +163,10 @@ function render(data) {
   }
   const actions = el("div", { class: "actions" });
   if (n) {
-    actions.append(el("a", { class: "button primary", href: `${base}.xlsx` }, "Download Excel"),
-                   el("a", { class: "button", href: `${base}.json` }, "Download JSON"));
+    actions.append(el("a", { class: "button primary", href: `${base}.xlsx` }, "download .xlsx"),
+                   el("a", { class: "button", href: `${base}.json` }, "download .json"));
   }
-  const again = el("button", {}, "Read another report");
+  const again = el("button", {}, "read another");
   again.onclick = () => { $("file").value = ""; show("start"); };
   actions.append(again);
   summary.append(actions);
@@ -192,7 +187,7 @@ function render(data) {
         ` · amounts in ${st.unit}`));
     const section = el("section", { class: "st", id: `st${i}` }, head);
     if (st.warnings.length) {
-      section.append(el("div", { class: "warnings", style: "margin: 4px 16px 10px" },
+      section.append(el("div", { class: "warnings" },
         "Check these against the report:", el("ul", {}, ...st.warnings.map((w) => el("li", {}, w)))));
     }
     const thead = el("thead", {}, el("tr", {}, el("th", {}, st.period === "as at" ? "As at" : "Year ended"), ...st.columns.map((c) => el("th", {}, c))));

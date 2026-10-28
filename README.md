@@ -4,7 +4,7 @@ Financial statements out of Indian annual reports. Give it an annual-report
 PDF; get the balance sheet, profit and loss and cash flows, consolidated and
 standalone, as JSON or an Excel workbook.
 
-*Madhippu* (மதிப்பு) is Tamil for value.
+*Madhippu* is Tamil for value.
 
 - **Checked, not guessed.** Every section must add up to its printed total.
   When one doesn't, its lines are dropped for that year and a warning says
